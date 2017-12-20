@@ -1,0 +1,1412 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/stream/Local.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/core/stream/</a> Local.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">1.69% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/178</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/83</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/45</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">1.81% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/166</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import StreamTypes from '../../definitions/StreamTypes';
+import * as Log from '../util/Log';
+import cache from '../util/cache';
+import * as DataSync from '../util/DataSync';
+import Media from '../util/Media';
+import {NONE, CLOSED, CLOSING, CONNECTED} from '../util/constants';
+&nbsp;
+const _facingModes = [Media.facingMode.USER, Media.facingMode.ENVIRONMENT];
+&nbsp;
+const _getConstraintValue = (constraints, prop) =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	return constraints[prop].exact || constraints[prop].ideal || constraints[prop];</span>
+};
+&nbsp;
+const _setConstrainValue = (constraints, prop, other, value) =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	constraints[prop] = {exact: value};</span>
+<span class="cstat-no" title="statement not covered" >	delete constraints[other];</span>
+};
+&nbsp;
+/**
+ * The local stream
+ */
+export default class Local {
+	/**
+	 * @access protected
+	 * @param {object} values
+	 */
+	constructor(values) <span class="fstat-no" title="function not covered" >{</span>
+		/**
+		 * The uid of the room the stream is published in
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.roomId = values.roomId;</span>
+		/**
+		 * The uid of this stream
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.uid = values.uid;</span>
+		/**
+		 * The type of the stream
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.type = values.type;</span>
+		/**
+		 * Indicates if a track is muted
+		 * @type {{audio: boolean, video: boolean}}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.muted = Object.assign({audio: false, video: false}, values.muted);</span>
+		/**
+		 * The local DOM container element where the {@link Local~media} is displayed
+		 * @type {Element}
+	  */
+<span class="cstat-no" title="statement not covered" >		this.container = values.container || cache.config.localStreamContainer;</span>
+		/**
+	  * The local DOM media element where the {@link Local~media} is displayed
+	  * @type {Element}
+	  */
+<span class="cstat-no" title="statement not covered" >		this.node = null;</span>
+		/**
+		 * List of the PeerConnections associated to this local stream
+		 * @type {PeerConnection[]}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.peerConnections = [];</span>
+		/**
+		 * Local stream status
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.status = NONE;</span>
+		/**
+		 * is the video is loaded int the local DOM media element
+		 * @type {boolean}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.isVideoLoaded = false;</span>
+		/**
+		 * @access private
+		 * @type {{audio: string, video: string}}
+		 */
+<span class="cstat-no" title="statement not covered" >		this._inputs = {};</span>
+&nbsp;
+		// Set constraints
+<span class="cstat-no" title="statement not covered" >		this.constraints = values.constraints;</span>
+	}
+&nbsp;
+	/**
+	 * The Media Constraints. (defaults to global config)
+	 * @param {MediaConstraints} constraints
+	 */
+	set constraints(constraints) <span class="fstat-no" title="function not covered" >{</span>
+		const
+			values = <span class="cstat-no" title="statement not covered" >constraints || cache.config.constraints,</span>
+			defaultConstraints = <span class="cstat-no" title="statement not covered" >Media.constraints();</span>
+<span class="cstat-no" title="statement not covered" >		['audio', 'video'].forEach(type =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >			if(!~this.type.indexOf(type)) {</span>
+<span class="cstat-no" title="statement not covered" >				values[type] = false;</span>
+			} else <span class="cstat-no" title="statement not covered" >if(!values[type]){</span>
+<span class="cstat-no" title="statement not covered" >				values[type] = defaultConstraints[type];</span>
+			}
+<span class="cstat-no" title="statement not covered" >			if(values[type].deviceId || values[type].facingMode) {</span>
+<span class="cstat-no" title="statement not covered" >				this._inputs[type] = _getConstraintValue(</span>
+					values[type],
+					values[type].facingMode ? 'facingMode' : 'deviceId'
+				);
+			}
+		});
+<span class="cstat-no" title="statement not covered" >		Log.d('Local~set#contraints', values);</span>
+		/**
+		 * @ignore
+		 */
+<span class="cstat-no" title="statement not covered" >		this._constraints = values;</span>
+	}
+&nbsp;
+	/**
+	 * The Media Constraints. (defaults to global config)
+	 * @type {MediaConstraints}
+	 */
+	get constraints() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this._constraints;</span>
+	}
+&nbsp;
+	/**
+	 * Updates the stream constraints and retrieve the new MediaStream
+	 * @param constraints
+	 * @returns {*|Promise.&lt;TResult&gt;}
+	 */
+	updateConstraints(constraints) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('Local~updateConstraints', constraints);</span>
+<span class="cstat-no" title="statement not covered" >		this.constraints = constraints;</span>
+<span class="cstat-no" title="statement not covered" >		return navigator.mediaDevices.getUserMedia(this.constraints)</span>
+			.then(media =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >				['audio', 'video'].forEach(kind =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+					const constraintsValue = <span class="cstat-no" title="statement not covered" >this.constraints[kind];</span>
+<span class="cstat-no" title="statement not covered" >					if(constraintsValue) {</span>
+<span class="cstat-no" title="statement not covered" >						if (constraintsValue.deviceId || constraintsValue.facingMode) {</span>
+<span class="cstat-no" title="statement not covered" >							this._inputs[kind] = _getConstraintValue(</span>
+								constraintsValue,
+								constraintsValue.facingMode ? 'facingMode' : 'deviceId'
+							);
+						}
+					}
+				});
+<span class="cstat-no" title="statement not covered" >				this.media = media;</span>
+			});
+	}
+&nbsp;
+	/**
+	 * The associated MediaStream
+	 * @type {MediaStream}
+	 */
+	set media (mediaStream) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(mediaStream) {</span>
+<span class="cstat-no" title="statement not covered" >			if(!(mediaStream instanceof MediaStream)) {</span>
+<span class="cstat-no" title="statement not covered" >				throw new Error('The media MUST be a MediaStream');</span>
+			}
+&nbsp;
+			const checkDevices = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >			mediaStream.getTracks().forEach(track =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+				// Reset mute
+<span class="cstat-no" title="statement not covered" >				track.enabled = !this.muted[track.kind];</span>
+				// Get device label
+<span class="cstat-no" title="statement not covered" >				if(!this._inputs[track.kind]) {</span>
+<span class="cstat-no" title="statement not covered" >					checkDevices[track.kind] = track.label;</span>
+				}
+			});
+			// Try to get deviceId from label
+<span class="cstat-no" title="statement not covered" >			if(Object.keys(checkDevices).length) {</span>
+<span class="cstat-no" title="statement not covered" >				Media.devices().then(devices =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >					Object.keys(checkDevices).forEach(kind =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >						if(devices[`${kind}input`]){</span>
+							const deviceIds = <span class="cstat-no" title="statement not covered" >devices[`${kind}input`]</span>
+								.filter(device =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >device.label.length &amp;&amp; device.label === checkDevices[kind])</span></span>;
+<span class="cstat-no" title="statement not covered" >							if(deviceIds.length === 1 &amp;&amp; !this._inputs[kind]) {</span>
+<span class="cstat-no" title="statement not covered" >								this._inputs[kind] = deviceIds[0].deviceId;</span>
+							}
+						}
+					});
+				});
+			}
+			// Display
+<span class="cstat-no" title="statement not covered" >			this.node = Media.attachStream(mediaStream, this.container, this.node, 0);</span>
+<span class="cstat-no" title="statement not covered" >			this.node.onloadeddata = () =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				this.isVideoLoaded = true;</span>
+			};
+<span class="cstat-no" title="statement not covered" >			this.status = CONNECTED;</span>
+<span class="cstat-no" title="statement not covered" >			Log.d('Local~set media', {mediaStream}, this.node);</span>
+			// Renegotiate
+<span class="cstat-no" title="statement not covered" >			this.peerConnections.forEach(peerConnection =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >peerConnection.renegotiate(this._media, mediaStream))</span></span>;</span>
+		} else <span class="cstat-no" title="statement not covered" >if(this.media &amp;&amp; !mediaStream) {</span>
+			// Remove node
+<span class="cstat-no" title="statement not covered" >			this.node.srcObject = null;</span>
+<span class="cstat-no" title="statement not covered" >			this.container.removeChild(this.node);</span>
+<span class="cstat-no" title="statement not covered" >			this.node = null;</span>
+			// Stop stream
+<span class="cstat-no" title="statement not covered" >			this.media.getTracks().forEach(track =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >track.stop())</span></span>;</span>
+			// Close PeerConnections
+<span class="cstat-no" title="statement not covered" >			this.peerConnections.forEach(peerConnection =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >peerConnection.close())</span></span>;</span>
+		}
+		// Save
+		/**
+		 * @ignore
+		 */
+<span class="cstat-no" title="statement not covered" >		this._media = mediaStream;</span>
+	}
+&nbsp;
+	/**
+	 * The associated MediaStream
+	 * @type {MediaStream}
+	 */
+	get media () <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this._media;</span>
+	}
+&nbsp;
+	/**
+	 * Mute a track of a Stream
+	 * @param {string} [track=AUDIO] The track to mute. (AUDIO, VIDEO, AUDIO_VIDEO)
+	 * @param {boolean} [state=true] true for mute &amp; false for un-mute
+	 * @example &lt;caption&gt;mute video&lt;/caption&gt;
+	 * stream.mute(Reach.t.VIDEO)
+	 * @example &lt;caption&gt;mute audio&lt;/caption&gt;
+	 * stream.mute(Reach.t.AUDIO)
+	 * // or
+	 * stream.mute()
+	 */
+	mute(track = StreamTypes.AUDIO, state = true) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('mute', track, state);</span>
+		let audio = <span class="cstat-no" title="statement not covered" >this.muted.audio,</span> video = <span class="cstat-no" title="statement not covered" >this.muted.video,</span> tracks;
+<span class="cstat-no" title="statement not covered" >		switch (track) {</span>
+			case StreamTypes.AUDIO:
+<span class="cstat-no" title="statement not covered" >				audio = state;</span>
+<span class="cstat-no" title="statement not covered" >				tracks = this.media.getAudioTracks();</span>
+<span class="cstat-no" title="statement not covered" >				break;</span>
+			case StreamTypes.VIDEO:
+			case StreamTypes.SCREEN_SHARING:
+<span class="cstat-no" title="statement not covered" >				video = state;</span>
+<span class="cstat-no" title="statement not covered" >				tracks = this.media.getVideoTracks();</span>
+<span class="cstat-no" title="statement not covered" >				break;</span>
+			case StreamTypes.AUDIO_VIDEO:
+<span class="cstat-no" title="statement not covered" >				audio = state;</span>
+<span class="cstat-no" title="statement not covered" >				video = state;</span>
+<span class="cstat-no" title="statement not covered" >				tracks = this.media.getTracks();</span>
+<span class="cstat-no" title="statement not covered" >				break;</span>
+		}
+		// Mute media tracks
+<span class="cstat-no" title="statement not covered" >		tracks.forEach(track =&gt; <span class="fstat-no" title="function not covered" >{<span class="cstat-no" title="statement not covered" >track.enabled = !state;}</span>)</span>;</span>
+		// Signal subscribers
+<span class="cstat-no" title="statement not covered" >		this.muted = {audio, video};</span>
+<span class="cstat-no" title="statement not covered" >		DataSync.set(`_/rooms/${this.roomId}/streams/${this.uid}/muted`, this.muted);</span>
+	}
+&nbsp;
+	/**
+	 * Un-mute a track of a Stream
+	 * @param {string} [track=AUDIO] The track to mute. (AUDIO, VIDEO, AUDIO_VIDEO)
+	 * @example &lt;caption&gt;Un-mute video&lt;/caption&gt;
+	 * stream.unMute(Reach.t.VIDEO)
+	 * @example &lt;caption&gt;Un-mute audio&lt;/caption&gt;
+	 * stream.unMute(Reach.t.AUDIO)
+	 * // or
+	 * stream.unMute()
+	 */
+	unMute(track) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		this.mute(track, false);</span>
+	}
+&nbsp;
+	/**
+	 * Removes stream for published list, closes associated PeerConnections and stops current MediaStream
+	 * @returns {Promise}
+	 */
+	close() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(!~[CLOSED, CLOSING].indexOf(this.status)) {</span>
+<span class="cstat-no" title="statement not covered" >			this.status = CLOSING;</span>
+			// Stop listening to Subscribers
+			const path = <span class="cstat-no" title="statement not covered" >`_/rooms/${this.roomId}/subscribers/${this.uid}`;</span>
+<span class="cstat-no" title="statement not covered" >			DataSync.off(path, 'child_added');</span>
+<span class="cstat-no" title="statement not covered" >			DataSync.off(path, 'child_removed');</span>
+			// Cancel onDisconnects
+<span class="cstat-no" title="statement not covered" >			DataSync.onDisconnect(`_/rooms/${this.roomId}/streams/${this.uid}`).cancel();</span>
+<span class="cstat-no" title="statement not covered" >			DataSync.onDisconnect(`_/rooms/${this.roomId}/subscribers/${this.uid}`).cancel();</span>
+			// Remove subscribers
+<span class="cstat-no" title="statement not covered" >			DataSync.remove(path);</span>
+			// Remove stream
+<span class="cstat-no" title="statement not covered" >			DataSync.remove(`_/rooms/${this.roomId}/streams/${this.uid}`);</span>
+<span class="cstat-no" title="statement not covered" >			this.media = null;</span>
+			// Close
+<span class="cstat-no" title="statement not covered" >			this.status = CLOSED;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		return Promise.resolve(this.status);</span>
+	}
+&nbsp;
+	/**
+	 * Switch video input device
+	 * @param {string} [deviceId] A video input device Id or the `facingMode` value
+	 * @returns {Promise&lt;Local, Error&gt;}
+	 */
+	switchCamera(deviceId) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this._switchDevice(StreamTypes.VIDEO, deviceId);</span>
+	}
+&nbsp;
+	/**
+	 * Switch audio input device
+	 * @param {string} [deviceId] A audio input device Id
+	 * @returns {Promise&lt;Local, Error&gt;}
+	 */
+	switchMicrophone(deviceId) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this._switchDevice(StreamTypes.AUDIO, deviceId);</span>
+	}
+&nbsp;
+	/**
+	 * Switch input device
+	 * @access private
+	 * @param {string} kind The kind of device to switch
+	 * @param {string} [deviceId] An input device id
+	 * @returns {Promise&lt;Local, Error&gt;}
+     */
+	_switchDevice(kind, deviceId) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('Local~_switchDevice', kind, deviceId);</span>
+<span class="cstat-no" title="statement not covered" >		if(this.media.getTracks().some(track =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >track.kind === kind)</span></span>) {</span>
+			let next = <span class="cstat-no" title="statement not covered" >Promise.resolve(deviceId);</span>
+			const currentModeIdx = <span class="cstat-no" title="statement not covered" >_facingModes.indexOf(this._inputs[kind]);</span>
+<span class="cstat-no" title="statement not covered" >			if(!deviceId &amp;&amp; !!~currentModeIdx) {</span>
+				// Loop facingModes
+<span class="cstat-no" title="statement not covered" >				next = Promise.resolve(_facingModes[(currentModeIdx + 1) % _facingModes.length]);</span>
+			} else <span class="cstat-no" title="statement not covered" >if(!~_facingModes.indexOf(deviceId)) {</span>
+				// Loop deviceIds
+<span class="cstat-no" title="statement not covered" >				next = Media.devices()</span>
+					.then(d =&gt; <span class="fstat-no" title="function not covered" >{</span>
+						// devices IDs
+						const devices = <span class="cstat-no" title="statement not covered" >d[`${kind}input`].map(mediaDevice =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >mediaDevice.deviceId)</span></span>;</span>
+						// Sort to ensure same order
+<span class="cstat-no" title="statement not covered" >						devices.sort();</span>
+						// New device
+						let nextDevice = <span class="cstat-no" title="statement not covered" >deviceId;</span>
+<span class="cstat-no" title="statement not covered" >						if(deviceId &amp;&amp; !devices.some(device =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >device === deviceId)</span></span>) {</span>
+<span class="cstat-no" title="statement not covered" >							return Promise.reject(new Error(`Unknown ${kind} device`));</span>
+						}
+<span class="cstat-no" title="statement not covered" >						if(!deviceId &amp;&amp; devices.length &gt; 1) {</span>
+							let idx = <span class="cstat-no" title="statement not covered" >this._inputs[kind] ? devices.findIndex(v =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >v === this._inputs[kind],</span></span> this) : 0;</span>
+<span class="cstat-no" title="statement not covered" >							nextDevice = devices[++idx % devices.length];</span>
+						}
+<span class="cstat-no" title="statement not covered" >						return nextDevice;</span>
+					});
+			} else {
+<span class="cstat-no" title="statement not covered" >				next = Promise.resolve(deviceId);</span>
+			}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >			return next</span>
+				.then(device =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >					if(this._inputs[kind] !== device) {</span>
+						// Update video streams
+<span class="cstat-no" title="statement not covered" >						this._inputs[kind] = device;</span>
+						// Stop tracks
+<span class="cstat-no" title="statement not covered" >						this.media.getTracks().forEach(track =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >track.stop())</span></span>;</span>
+						// Update constraints
+						const constraints = <span class="cstat-no" title="statement not covered" >Object.assign({}, this.constraints);</span>
+						let props = <span class="cstat-no" title="statement not covered" >['facingMode', 'deviceId'];</span>
+<span class="cstat-no" title="statement not covered" >						if(!~_facingModes.indexOf(device)) {</span>
+<span class="cstat-no" title="statement not covered" >							props = props.reverse();</span>
+						}
+<span class="cstat-no" title="statement not covered" >						_setConstrainValue(constraints[kind], props[0], props[1], device);</span>
+<span class="cstat-no" title="statement not covered" >						Log.d('Local~_switchDevice', kind, constraints);</span>
+<span class="cstat-no" title="statement not covered" >						return this.updateConstraints(constraints);</span>
+					}
+				})
+				.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this)</span></span>;
+		}
+<span class="cstat-no" title="statement not covered" >		return Promise.reject(new Error(`Current stream does not contain a ${kind} track`));</span>
+	}
+	/**
+	 * Publish a local stream
+	 * @access protected
+	 * @param {string} roomId The room Id
+	 * @param {string} type The stream type, see {@link StreamTypes} for possible values
+	 * @param {?Element} container The element the stream is attached to.
+	 * @param {?MediaStreamConstraints} [constraints] The stream constraints. If not defined the constraints defined in ReachConfig will be used.
+	 * @returns {Promise&lt;Local, Error&gt;}
+	 */
+	static share(roomId, type, container, constraints) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(!cache.user) {</span>
+<span class="cstat-no" title="statement not covered" >			return Promise.reject(new Error('Only an authenticated user can share a stream.'));</span>
+		}
+		const streamMetaData = <span class="cstat-no" title="statement not covered" >{</span>
+				from: cache.user.uid,
+				device: cache.device,
+				type
+			},
+			sharedStream = <span class="cstat-no" title="statement not covered" >new Local(Object.assign({roomId, constraints, container}, streamMetaData));</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('Local~share', {sharedStream});</span>
+<span class="cstat-no" title="statement not covered" >		return navigator.mediaDevices.getUserMedia(sharedStream.constraints)</span>
+			.then(media =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >				sharedStream.media = media;</span>
+			})
+			// Got MediaStream, publish it
+			.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >DataSync.push(`_/rooms/${roomId}/streams`, streamMetaData))</span></span>
+			.then(streamRef =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >				sharedStream.uid = streamRef.name();</span>
+<span class="cstat-no" title="statement not covered" >				if (sharedStream.isVideoLoaded) {</span>
+					const streamSize = <span class="cstat-no" title="statement not covered" >{</span>
+						height: sharedStream.node.videoHeight,
+						width: sharedStream.node.videoWidth,
+					};
+<span class="cstat-no" title="statement not covered" >					streamRef.update(streamSize);</span>
+				} else {
+<span class="cstat-no" title="statement not covered" >					sharedStream.node.onloadeddata = function() <span class="fstat-no" title="function not covered" >{</span></span>
+						const streamSize = <span class="cstat-no" title="statement not covered" >{</span>
+							height: sharedStream.node.videoHeight,
+							width: sharedStream.node.videoWidth,
+						};
+<span class="cstat-no" title="statement not covered" >						streamRef.update(streamSize);</span>
+					};
+				}
+<span class="cstat-no" title="statement not covered" >				window.addEventListener('resize', (() =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >					if (sharedStream.node != null) {</span>
+						const streamSize = <span class="cstat-no" title="statement not covered" >{</span>
+							height: sharedStream.node.videoHeight,
+							width: sharedStream.node.videoWidth,
+						};
+<span class="cstat-no" title="statement not covered" >						streamRef.update(streamSize);</span>
+					}
+				}));
+				// Save sharedStream
+<span class="cstat-no" title="statement not covered" >				cache.streams.shared[sharedStream.uid] = sharedStream;</span>
+				// Remove shared stream on Disconnect
+<span class="cstat-no" title="statement not covered" >				DataSync.onDisconnect(`_/rooms/${roomId}/streams/${sharedStream.uid}`).remove();</span>
+				// Remove shared stream on Disconnect
+<span class="cstat-no" title="statement not covered" >				DataSync.onDisconnect(`_/rooms/${roomId}/subscribers/${sharedStream.uid}`).remove();</span>
+				// Start listening to subscribers
+				const
+					path = <span class="cstat-no" title="statement not covered" >`_/rooms/${sharedStream.roomId}/subscribers/${sharedStream.uid}`,</span>
+					value = <span class="cstat-no" title="statement not covered" >snapData =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >Object.assign({device: snapData.name()}, snapData.val() || {});</span></span></span>
+<span class="cstat-no" title="statement not covered" >				DataSync.on(path, 'child_added',</span>
+					snapData =&gt; <span class="fstat-no" title="function not covered" >{</span>
+						const subscriber = <span class="cstat-no" title="statement not covered" >value(snapData);</span>
+<span class="cstat-no" title="statement not covered" >						Log.d('Local~subscribed', subscriber);</span>
+<span class="cstat-no" title="statement not covered" >						cache.peerConnections.offer(sharedStream, subscriber)</span>
+							.then(pc =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >sharedStream.peerConnections.push(pc))</span></span>;
+					},
+					Log.e.bind(Log)
+				);
+<span class="cstat-no" title="statement not covered" >				DataSync.on(path, 'child_removed',</span>
+					snapData =&gt; <span class="fstat-no" title="function not covered" >{</span>
+						const subscriber = <span class="cstat-no" title="statement not covered" >value(snapData);</span>
+<span class="cstat-no" title="statement not covered" >						Log.d('Local~un-subscribed', subscriber);</span>
+						const closedPC = <span class="cstat-no" title="statement not covered" >cache.peerConnections.close(sharedStream.uid, subscriber.device);</span>
+<span class="cstat-no" title="statement not covered" >						sharedStream.peerConnections = sharedStream.peerConnections.filter(pc =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >pc !== closedPC)</span></span>;</span>
+					},
+					Log.e.bind(Log)
+				);
+<span class="cstat-no" title="statement not covered" >				Log.d('Local~shared', {sharedStream});</span>
+<span class="cstat-no" title="statement not covered" >				return sharedStream;</span>
+			});
+	}
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 14:53:54 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

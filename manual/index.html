@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Manual</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container manual-root manual-index" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/webcom-components/reach" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div class="manual-toc-root">
+  
+<div data-ice="manual" data-toc-name="design">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-design" data-section-count="&#x25A0;" data-link="manual/design/index.html"><a href="manual/design/index.html" data-ice="link">The Data Model</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="installation">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-installation" data-section-count="&#x25A0;&#x25A0;" data-link="manual/installation/index.html"><a href="manual/installation/index.html" data-ice="link">Installation</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/installation/index.html"><a href="manual/installation/index.html#from-cdn" data-ice="link">from CDN</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/installation/index.html"><a href="manual/installation/index.html#using-your-favorite-package-manager" data-ice="link">Using your favorite package manager</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/installation/index.html"><a href="manual/installation/index.html#-npm-npm-" data-ice="link">npm</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/installation/index.html"><a href="manual/installation/index.html#-yarn-yarn-" data-ice="link">yarn</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="tutorial">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-tutorial" data-section-count="&#x25A0;&#x25A0;&#x25A0;" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html" data-ice="link">Getting started</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#init-your-namespace" data-ice="link">Init your namespace</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#get-the-library" data-ice="link">Get the library</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#the-bases" data-ice="link">The bases</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#the-reach-object" data-ice="link">The Reach object</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#register-a-new-user" data-ice="link">Register a new User</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#list-users-amp-rooms" data-ice="link">List Users &amp; Rooms</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#create-a-room" data-ice="link">Create a Room</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#invite-one-or-more-users" data-ice="link">Invite one or more users</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#respond-to-invitations" data-ice="link">Respond to invitations</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#share-the-camera" data-ice="link">Share the camera</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/tutorial/index.html"><a href="manual/tutorial/index.html#listen-to-shared-streams" data-ice="link">Listen to shared streams</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="usage">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-usage" data-section-count="&#x25A0;&#x25A0;" data-link="manual/usage/index.html"><a href="manual/usage/index.html" data-ice="link">Sharing streams</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/index.html"><a href="manual/usage/index.html#the-share-method" data-ice="link">The share method</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/index.html"><a href="manual/usage/index.html#the-stream-type" data-ice="link">The stream type</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/index.html"><a href="manual/usage/index.html#the-media-constraints" data-ice="link">The Media constraints</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/usage/index.html"><a href="manual/usage/index.html#the-container-node" data-ice="link">The container node</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/index.html"><a href="manual/usage/index.html#switching-the-camera" data-ice="link">Switching the camera</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/usage/index.html"><a href="manual/usage/index.html#prefer-codecs" data-ice="link">Prefer Codecs</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="configuration">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-configuration" data-section-count="&#x25A0;" data-link="manual/configuration/index.html"><a href="manual/configuration/index.html" data-ice="link">ICE management</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration/index.html"><a href="manual/configuration/index.html#configure-ice-servers-in-app" data-ice="link">Configure ICE servers in app</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration/index.html"><a href="manual/configuration/index.html#configure-ice-servers-on-server" data-ice="link">Configure ICE servers on server</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/configuration/index.html"><a href="manual/configuration/index.html#limitations" data-ice="link">Limitations</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="example">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-example" data-section-count="&#x25A0;" data-link="manual/example/index.html"><a href="manual/example/index.html" data-ice="link">Example</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/example/index.html"><a href="manual/example/index.html#visio-sample" data-ice="link">visio-sample</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/example/index.html"><a href="manual/example/index.html#webirtc" data-ice="link">webirtc</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="reference">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-reference" data-section-count="&#x25A0;&#x25A0;&#x25A0;&#x25A0;&#x25A0;" data-link="identifiers.html"><a href="identifiers.html" data-ice="link">Reference</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#class" data-ice="link">Class</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#typedef" data-ice="link">Typedef</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="identifiers.html"><a href="identifiers.html#external" data-ice="link">External</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="faq">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-faq" data-section-count="&#x25A0;" data-link="manual/faq/index.html"><a href="manual/faq/index.html" data-ice="link">FAQ</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/faq/index.html"><a href="manual/faq/index.html#is-my-browser-supported-" data-ice="link">Is my browser supported ?</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/faq/index.html"><a href="manual/faq/index.html#is-version-2-compatible-with-previous-versions-" data-ice="link">Is version 2+ compatible with previous versions ?</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/faq/index.html"><a href="manual/faq/index.html#what-s-next-" data-ice="link">What&apos;s next ?</a></li>
+<li data-ice="manualNav" class="indent-h1 manual-color manual-color-faq" data-section-count="&#x25A0;&#x25A0;&#x25A0;" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html" data-ice="link">How Can I Contribute?</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#report-bugs" data-ice="link">Report Bugs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#before-submitting-a-bug-report" data-ice="link">Before Submitting A Bug Report</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#how-do-i-submit-a-good-bug-report-" data-ice="link">How Do I Submit A (Good) Bug Report?</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#template-for-submitting-bug-reports" data-ice="link">Template For Submitting Bug Reports</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#develop-new-features-fix-bugs" data-ice="link">Develop new features / Fix bugs</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#prepare-your-development-environment" data-ice="link">Prepare your development environment</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#document-your-code" data-ice="link">Document your code</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#test-your-code" data-ice="link">Test your code</a></li>
+<li data-ice="manualNav" class="indent-h3" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#commit-your-modifications" data-ice="link">Commit your modifications</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#files" data-ice="link">Files</a></li>
+<li data-ice="manualNav" class="indent-h4" data-link="manual/faq/CONTRIBUTING.html"><a href="manual/faq/CONTRIBUTING.html#messages" data-ice="link">Messages</a></li>
+</ul>
+  </div>
+<div data-ice="manual" data-toc-name="changelog">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1 manual-color manual-color-changelog" data-section-count="&#x25A0;" data-link="manual/changelog/index.html"><a href="manual/changelog/index.html" data-ice="link">Changelog</a></li>
+</ul>
+  </div>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div class="github-markdown">
+  
+
+  <p class="manual-badge" data-ice="manualBadge"><img src="./manual-badge.svg"></p>
+
+  <div class="manual-cards">
+    
+  <div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-design" data-section-count="&#x25A0;"><span data-ice="label-inner">The Data Model</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>The Data Model</h1><p>The data model is described as a JSON schema on github in the <a href="https://github.com/webcom-components/reach-schema">webcom-components/reach-schema</a> repo.</p><p>See <a href="https://webcom-components.github.io/reach-schema/#draft-00">https://webcom-components.github.io/reach-schema/#draft-00</a> to visualize the data model used in Reach.</p><p>The corresponding Security Rules can be found <a href="https://webcom-components.github.io/reach-schema/draft-00/security/rules.json">here</a>.</p><p>You will need to import those rules in order to enforce security in your application. Take a look at the test results to understand these rules.</p></div>
+        <a data-ice="link" href="manual/design/index.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-installation" data-section-count="&#x25A0;&#x25A0;"><span data-ice="label-inner">Installation</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>Installation</h1><h2>from CDN</h2><p>The fastest way to get started is to serve JavaScript from <a href="https://www.jsdelivr.com/projects/webcom-reach">jsdelivr</a> or <a href="https://unpkg.com/webcom-reach/">unpkg</a>:</p><pre><code class="lang-html"><code class="source-code prettyprint">&lt;!-- The Flexible DataSync library --&gt;
+&lt;script type=&apos;text/javascript&apos; src=&apos;https://unpkg.com/webcom/webcom&apos;&gt;&lt;/script&gt;
+&lt;!-- The Reach Library --&gt;
+&lt;script type=&apos;text/javascript&apos; src=&apos;https://unpkg.com/webcom-reach&apos;&gt;&lt;/script&gt;
+&lt;!-- OR --&gt;
+&lt;script type=&apos;text/javascript&apos; src=&apos;https://cdn.jsdelivr.net/webcom-reach/latest/reach.js&apos;&gt;&lt;/script&gt;</code>
+</code></pre><h2>Using your favorite package manager</h2><h3><a href="https://www.npmjs.com/package/webcom-reach">npm</a></h3><pre><code class="lang-bash"><code class="source-code prettyprint">npm i --save webcom-reach</code>
+</code></pre><h3><a href="https://yarnpkg.com/search/?q=webcom-reach">yarn</a></h3><pre><code class="lang-bash"><code class="source-code prettyprint">yarn add webcom-reach</code>
+</code></pre><p>Then just import Reach within your code :</p><pre><code class="lang-javascript"><code class="source-code prettyprint">import Reach from &apos;webcom-reach&apos;;</code>
+</code></pre></div>
+        <a data-ice="link" href="manual/installation/index.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-tutorial" data-section-count="&#x25A0;&#x25A0;&#x25A0;"><span data-ice="label-inner">Getting started</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>Getting started</h1><h3>Init your namespace</h3><ul>
+<li>Go to <a href="https://io.datasync.orange.com/">Flexible DataSync</a></li>
+<li>Create a new namespace</li>
+<li>Download the security rules from the <a href="https://webcom-components.github.io/reach-schema/draft-00/security/rules.json">reach-schema</a> repo and import them in the <code>security</code> section</li>
+</ul><h3>Get the library</h3><p>See <a href="./manual/./installation/">installation</a> on how to retrieve the Reach library and its dependencies.</p><h3>The bases</h3><h4>The Reach object</h4><p>The Reach object is your only entry point.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const myReach = new Reach(&apos;https://io.datasync.orange.com/base/&lt;your_namespace&gt;&apos;);</code>
+</code></pre><p>See <a href="./manual/./configuration/">configuration</a> to learn more on the available configuration possibilities.</p><h4>Register a new User</h4><p>Create a basic registration form with email &amp; password and use its data:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">myReach.register(email, password)
+    .then(user =&gt; {
+        // user is registered &amp; authenticated
+    });</code>
+</code></pre><h4>List Users &amp; Rooms</h4><p>Once the user is logged in, you can list all registered users and opened rooms:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// List users
+myReach.users()
+    .then(users =&gt; {
+        // users is the list of registered users excluding the current one
+        // let&apos;s keep only the connected users
+        window.myUsers = users.filter(user =&gt; user.status === &apos;CONNECTED&apos;);
+    });
+// List rooms
+myReach.rooms()
+    .then(rooms =&gt; {
+        // list of opened rooms
+    });</code>
+</code></pre><h4>Create a Room</h4><p>All users can create a room.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">myReach.createRoom(&apos;GettingStarted&apos;)
+    .then(room =&gt; {
+        // room is the newly created room
+        window.myRoom = room;
+        // the current user has automatically joined the room
+    });</code>
+</code></pre><h4>Invite one or more users</h4><p>Let&apos;s assume, you have selected a list of users:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">myRoom.invite(myUsers)
+    .then((room, invites) =&gt; {
+        // An invite has been sent to all users in myUsers
+        // You can listen to invites responses
+        invites.forEach(invite =&gt; {
+            invite.on(&apos;ACCEPTED&apos;, i =&gt; {
+                // Invite has been accepted
+            });
+            invite.on(&apos;REJECTED&apos;, i =&gt; {
+                // Invite has been accepted
+            });
+        });
+    });</code>
+</code></pre><h4>Respond to invitations</h4><p>First we need to listen to incoming invites:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">myReach.on(Reach.events.reach.INVITE_ADDED, invite =&gt; {
+    // New invite received, let&apos;s accept it
+    invite.accept()
+        .then(d =&gt; {
+            // Join the room
+            window.hisRoom = d.room;
+            return d.room.join();
+        });
+});</code>
+</code></pre><h4>Share the camera</h4><p>Once connected to the room, a user can share a media stream with the other participants of the room.
+Only the room participants will be able to view that stream.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">myRoom.share(Reach.types.AUDIO_VIDEO, localVideoContainerNode, Reach.media.constraint(&apos;HD&apos;))
+    .then(localStream =&gt; {
+        // The local Stream has been initiated, meaning `getUserMedia` has been called and that the video stream is displayed within
+        // the `localVideoContainerNode`
+    });</code>
+</code></pre><p>See <a href="">stream sharing</a> to get more details.</p><h4>Listen to shared streams</h4><p>Listen to published stream right after joining the room so you won&apos;t miss any shared stream:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">hisRoom.on(Reach.event.room.STREAM_PUBLISHED, remoteStream =&gt; {
+    window.hisStream = remoteStream;
+    remoteStream.subscribe(remoteVideoContainerNode)
+        .then(() =&gt; {
+            // Remote stream is subscribed and the video should appear in the `remoteVideoContainerNode` when WebRTC peer connection is established
+        });
+});</code>
+</code></pre></div>
+        <a data-ice="link" href="manual/tutorial/index.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-usage" data-section-count="&#x25A0;&#x25A0;"><span data-ice="label-inner">Sharing streams</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>Sharing streams</h1><p>Stream can only be shared within a Room using the <a href="./manual/../class/src/core/Room.js~Room.html#instance-method-share">share</a> method.</p><h2>The <code>share</code> method</h2><p>The <a href="./manual/../class/src/core/Room.js~Room.html#instance-method-share">share</a> method can take up to 3 arguments.</p><h3>The stream type</h3><p>Can be <code>AUDIO</code>, <code>VIDEO</code>, <code>AUDIO_VIDEO</code> or any of the stream type defined <a href="./manual/../typedef/index.html#static-typedef-StreamTypes">here</a></p><h3>The Media constraints</h3><p>The media constraints can be defined when calling <a href="./manual/../class/src/core/Room.js~Room.html#instance-method-share">share</a>:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">room.share(Reach.types.AUDIO_VIDEO, {audio: true, video: {width: 1080}});</code>
+</code></pre><p>or on init: </p><pre><code class="lang-javascript"><code class="source-code prettyprint">const myReach = new Reach(&apos;https://io.datasync.orange.com/base/&lt;your_namespace&gt;&apos;, {
+    constraints: {audio: true, video: {width: 1080}}
+});</code>
+</code></pre><p>A media constraints helper is exposed as a static member of Reach. It will return a well formatted constraints object:</p><pre><code><code class="source-code prettyprint">// Default constraints
+console.log(Reach.media.constraints());
+// Will output {&quot;video&quot;:{&quot;width&quot;:{&quot;min&quot;:720,&quot;ideal&quot;:1280,&quot;max&quot;:1920},&quot;height&quot;:{&quot;min&quot;:576,&quot;ideal&quot;:720,&quot;max&quot;:1080}},&quot;audio&quot;:true}
+
+// SD preset
+console.log(Reach.media.constraints(&apos;SD&apos;));
+// Will output {&quot;video&quot;:{&quot;width&quot;:{&quot;min&quot;:640,&quot;ideal&quot;:720,&quot;max&quot;:1280},&quot;height&quot;:{&quot;min&quot;:480,&quot;ideal&quot;:576,&quot;max&quot;:720}},&quot;audio&quot;:true}</code>
+</code></pre><h3>The container node</h3><p>You only need to provide a container node (i.e. a div), Reach will create the appropriate media element (i.e. audio or video) for the given stream.</p><h2>Switching the camera</h2><p>Once a stream is shared, you can switch between media devices:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">myStream.switchCamera()
+    .then(stream =&gt; {
+        // stream is myStream
+    })</code>
+</code></pre><p>The switchCamera method will loop through available video devices found via mediaDevice.enumerateDevice.</p><p>You can specify which device you want to switch to by passing the device&apos;s id to the switchCamera method.</p><p>The same method exists for switching the microphone.</p><h2>Prefer Codecs</h2><p>On init, you can specify a preferred codec to use when negotiating the PeerConnection.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const myReach = new Reach(&apos;https://io.datasync.orange.com/base/&lt;your_namespace&gt;&apos;, {
+    preferredAudioCodec: Reach.codecs.audio.OPUS,
+    preferredVideoCodec: Reach.codecs.video.VP9
+});</code>
+</code></pre><p>The preferred codec must be specified as a RegExp. You can find predefined ones in Reach.codecs.</p><p>On negotiation, Reach will edit the SDP offer before sending it and reorder the available codecs to suit your configuration</p></div>
+        <a data-ice="link" href="manual/usage/index.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-configuration" data-section-count="&#x25A0;"><span data-ice="label-inner">ICE management</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>ICE management</h1><p>Reach comes with default TURN &amp; TURNS servers configured:</p><pre><code class="lang-json"><code class="source-code prettyprint">{
+    &quot;username&quot;: &quot;admin&quot;,
+    &quot;credential&quot;: &quot;webcom1234&quot;,
+    &quot;urls&quot;: [
+        &quot;turns:turn1.webcom.orange.com:443&quot;,
+        &quot;turn:turn1.webcom.orange.com:443?transport=tcp&quot;,
+        &quot;turn:turn1.webcom.orange.com:3478?transport=tcp&quot;
+    ]
+}</code>
+</code></pre><p>But if needed, you can over overwrite this settings either when instantiating Reach or directly in your Flexible DataSync namespace.</p><h3>Configure ICE servers in app</h3><p>Pass your ICE servers list when instantiating Reach:</p><pre><code><code class="source-code prettyprint">const myReach = new Reach(&apos;https://io.datasync.orange.com/base/&lt;your_namespace&gt;&apos;, {
+    iceServers: [
+        {
+            username: &apos;admin&apos;,
+            credential: &apos;webcom1234&apos;,
+            urls: [
+                &apos;turns:turn1.webcom.orange.com:443&apos;,
+                &apos;turn:turn1.webcom.orange.com:443?transport=tcp&apos;,
+                &apos;turn:turn1.webcom.orange.com:3478?transport=tcp&apos;
+            ]
+        }
+    ]
+});</code>
+</code></pre><h3>Configure ICE servers on server</h3><p>This method prevents you from having to re-deploy your app everytime you want/need to reconfigure your ICE servers:</p><ul>
+<li>go to <a href="https://io.datasync.orange.com/">Flexible DataSync</a>&apos;s console</li>
+<li>select your namespace</li>
+<li>add your ICE servers using the <code>data</code> section on the <code>_/ice/</code> path.</li>
+</ul><p>All ICE servers must be of this type:</p><pre><code class="lang-json"><code class="source-code prettyprint">{
+    &quot;username&quot;: &lt;String?&gt;,
+    &quot;credential&quot;: &lt;String?&gt;,
+    &quot;urls&quot;: &lt;String|String[]&gt;
+}</code>
+</code></pre><h3>Limitations</h3><p>To date, Mozilla Firefox doesn&apos;t support TURNS server (but it&apos;s ok for TURN et STUN server). If TURNS server are specified, they will be ignored on Firefox</p></div>
+        <a data-ice="link" href="manual/configuration/index.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-example" data-section-count="&#x25A0;"><span data-ice="label-inner">Example</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>Example</h1><h2>visio-sample</h2><p><a href="https://github.com/webcom-components/visio-sample">visio-sample</a> is an example of a visio web app available <a href="https://webcom-components.github.io/visio-sample">here</a>.</p><p>You can check the code for this sample in the dedicated Github <a href="https://github.com/webcom-components/visio-sample">repo</a>.</p><h2>webirtc</h2><blockquote>
+<p>webirtc is still using the legacy version of Reach</p>
+</blockquote><p><a href="https://io.datasync.orange.com/samples/webirtc/">webirtc</a> is another example of a multimedia chat based on Reach.</p></div>
+        <a data-ice="link" href="manual/example/index.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-reference" data-section-count="&#x25A0;&#x25A0;&#x25A0;&#x25A0;&#x25A0;"><span data-ice="label-inner">References</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>References</h1>
+<div data-ice="classSummary"><h2 id="class">Class Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Class Summary</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/Config.js~Config.html">Config</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The Reach configuration object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/Invite.js~Invite.html">Invite</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Invitation</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/stream/Local.js~Local.html">Local</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The local stream</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/util/Media.js~Media.html">Media</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Helpers for MediaDevices and MediaStreamConstraints.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/Message.js~Message.html">Message</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Instant Message</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/Participant.js~Participant.html">Participant</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p><span><a href="class/src/core/Room.js~Room.html">Room</a></span> participant</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/webrtc/PeerConnection.js~PeerConnection.html">PeerConnection</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The PeerConnection.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/Reach.js~Reach.html">Reach</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Entry point for Reach SDK</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/stream/Remote.js~Remote.html">Remote</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>A published Stream</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/Room.js~Room.html">Room</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Room information</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/core/User.js~User.html">User</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>User informations</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+<div data-ice="typedefSummary"><h2 id="typedef">Typedef Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Typedef Summary</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-Browser">Browser</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The current browser&apos;s infos</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-Codec/audio">Codec/audio</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Audio codec presets to use for</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-Codec/video">Codec/video</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Video codec presets to use for</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Invite">Events/Invite</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The events supported by <span><a href="class/src/core/Invite.js~Invite.html#instance-method-on">Invite#on</a></span></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Reach">Events/Reach</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The events supported by <span><a href="class/src/Reach.js~Reach.html#instance-method-on">Reach#on</a></span></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Room">Events/Room</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The events supported by <span><a href="class/src/core/Room.js~Room.html#instance-method-on">Room#on</a></span></p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Stream">Events/Stream</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The events supported by <span><a href="class/src/core/stream/Remote.js~Remote.html#instance-method-on">Remote#on</a></span>.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-ICEServer">ICEServer</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>TURN/STUN server configuration</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamTypes">StreamTypes</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>The available stream types</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="externalSummary"><h2 id="external">External Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public External Summary</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="http://w3c.github.io/mediacapture-main/#idl-def-MediaDeviceInfo">MediaDeviceInfo</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://w3c.github.io/mediacapture-main/getusermedia.html#stream-api">MediaStream</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://w3c.github.io/mediacapture-main/getusermedia.html#idl-def-MediaStreamConstraints">MediaStreamConstraints</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://w3c.github.io/mediacapture-main/getusermedia.html#idl-def-MediaTrackConstraints">MediaTrackConstraints</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://w3c.github.io/webrtc-pc/#interface-definition">RTCPeerConnection</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://w3c.github.io/webrtc-pc/#rtcrtpsender-interface">RTCRtpSender</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://w3c.github.io/webrtc-pc/#rtcsessiondescription-class">RTCSessionDescription</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://datasync.orange.com/doc/Webcom.html">Webcom</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="https://datasync.orange.com/doc/api.Query.html#~cancelCallback">Webcom/api.Query~cancelCallback</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+        <a data-ice="link" href="identifiers.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-faq" data-section-count="&#x25A0;"><span data-ice="label-inner">FAQ</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>FAQ</h1><h2>Is my browser supported ?</h2><p>Reach works on the following browsers:</p><ul>
+<li>Google Chrome / Chromium 43+</li>
+<li>Mozilla Firefox 38+</li>
+<li>Microsoft Edge 13+</li>
+</ul><p><br>
+However, video codec support differs from one browser to the other. For example, Edge only supports H264UC and Chrome only VP8 and VP9, thus making them not interoperable with video.</p><p>Otherwise, if your browser <a href="http://caniuse.com/#search=webrtc">supports WebRTC</a>, there&apos;s a high probability that Reach may work on your browser. </p><p>Since Reach uses <a href="https://github.com/webrtc/adapter">WebRTC&apos;s adapter</a> to insulate the SDK from spec changes and prefix differences, you might find more information on supported browsers <a href="https://github.com/webrtc/adapter">there</a>.</p><h2>Is version 2+ compatible with previous versions ?</h2><p>No. Both model &amp; API have been completely changed.</p><h2>What&apos;s next ?</h2><ul>
+<li>Documentation:<ul>
+<li>Add tutorial on user presence</li>
+<li>Add tutorial on user management</li>
+<li>Add tutorial on invite management</li>
+<li>Add tutorial on room permissions</li>
+</ul>
+</li>
+<li>Tests:<ul>
+<li>Improve coverage</li>
+<li>Add End-2-End WebRTC test</li>
+</ul>
+</li>
+<li>Features:<ul>
+<li>Add buddy list</li>
+<li>Add history</li>
+<li>...</li>
+</ul>
+</li>
+</ul></div>
+        <a data-ice="link" href="manual/faq/index.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-faq" data-section-count="&#x25A0;&#x25A0;&#x25A0;"><span data-ice="label-inner">How Can I Contribute?</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>How Can I Contribute?</h1><p>The following is a set of guidelines for contributing to Reach.</p><ul>
+<li><p><a href="#report-bugs">Report Bugs</a></p>
+</li>
+<li><p><a href="#develop-new-features--fix-bugs">Develop new features / Fix bugs</a></p>
+<ul>
+<li><a href="#prepare-your-development-environment">Prepare</a></li>
+<li><a href="#document-your-code">Document</a></li>
+<li><a href="#test-your-code">Test</a></li>
+<li><a href="#commit-your-modifications">Commit</a></li>
+</ul>
+</li>
+</ul><h2>Report Bugs</h2><p>This section guides you through submitting a bug report for Reach. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports.</p><p>Before creating bug reports, please check <a href="#before-submitting-a-bug-report">this list</a> as you might find out that you don&apos;t need to create one. When you are creating a bug report, please <a href="#how-do-i-submit-a-good-bug-report">include as many details as possible</a>. If you&apos;d like, you can use <a href="#template-for-submitting-bug-reports">this template</a> to structure the information.</p><h3>Before Submitting A Bug Report</h3><ul>
+<li><strong>Check the console logs and use the <a href="https://raw.githubusercontent.com/webcom-components/reach/master/dist/reach-debug.js">debug version</a>.</strong> You might be able to find the cause of the problem and fix things yourself. Most importantly, check if you can reproduce the problem in the latest version of Reach.</li>
+<li><strong>Perform a <a href="https://github.com/webcom-components/reach/issues">search</a></strong> to see if the problem has already been reported. If it has, add a comment to the existing issue instead of opening a new one.</li>
+</ul><h3>How Do I Submit A (Good) Bug Report?</h3><p>Bugs are tracked as <a href="https://guides.github.com/features/issues/">GitHub issues</a>. Create an issue on the repository and provide the following information.</p><p>Explain the problem and include additional details to help maintainers reproduce the problem:</p><ul>
+<li><strong>Use a clear and descriptive title</strong> for the issue to identify the problem.</li>
+<li><strong>Describe the exact steps which reproduce the problem</strong> in as many details as possible. For example, start by explaining how you started Atom, e.g. which command exactly you used in the terminal, or how you started Atom otherwise. When listing steps, <strong>don&apos;t just say what you did, but explain how you did it</strong>. For example, if you moved the cursor to the end of a line, explain if you used the mouse, or a keyboard shortcut or an Atom command, and if so which one?</li>
+<li><strong>Provide specific examples to demonstrate the steps</strong>. Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. If you&apos;re providing snippets in the issue, use <a href="https://help.github.com/articles/markdown-basics/#multiple-lines">Markdown code blocks</a>.</li>
+<li><strong>Describe the behavior you observed after following the steps</strong> and point out what exactly is the problem with that behavior.</li>
+<li><strong>Explain which behavior you expected to see instead and why.</strong></li>
+</ul><p>Provide more context by answering these questions:</p><ul>
+<li><strong>Did the problem start happening recently</strong> (e.g. after updating to a new version of Reach) or was this always a problem?</li>
+<li>If the problem started happening recently, <strong>can you reproduce the problem in an older version of Reach?</strong> What&apos;s the most recent version in which the problem doesn&apos;t happen? You can download older versions of Reach using npm.</li>
+<li><strong>Can you reliably reproduce the issue?</strong> If not, provide details about how often the problem happens and under which conditions it normally happens.</li>
+</ul><p>Include details about your configuration and environment:</p><ul>
+<li><strong>Which version of Reach are you using?</strong> You can get the exact version by from the <code>package.json</code> in <code>node_modules/webcom-reach</code> if you&apos;re using npm or from the <code>bower.json</code> in <code>bower_components/webcom-reach</code> .</li>
+<li><strong>What&apos;s the name and version of the browser you&apos;re using as well as the name and version of the OS</strong>?</li>
+</ul><h3>Template For Submitting Bug Reports</h3><pre><code><code class="source-code prettyprint">[Short description of problem here]
+
+**Reproduction Steps:**
+
+1. [First Step]
+2. [Second Step]
+3. [Other Steps...]
+
+**Expected behavior:**
+
+[Describe expected behavior here]
+
+**Observed behavior:**
+
+[Describe observed behavior here]
+
+**Screenshots and GIFs**
+
+![Screenshots and GIFs which follow reproduction steps to demonstrate the problem](url)
+
+**Reach version:** [Enter Reach version here]
+**Browser and version:** [Enter Browser name and version here]
+**OS and version:** [Enter OS name and version here]
+
+**Additional information:**
+
+* Problem started happening recently, didn&apos;t happen in an older version of Reach: [Yes/No]
+* Problem can be reliably reproduced, doesn&apos;t happen randomly: [Yes/No]</code>
+</code></pre><h2>Develop new features / Fix bugs</h2><h3>Prepare your development environment</h3><p>Start with the obvious and either clone or fork this repo. Run <code>npm install</code>. We advise you to use a recent version of node (5+).</p><p>You can use your favorite IDE. Try to enable eslint with the project configuration file <code>.eslintrc.yml</code> within your IDE, it will greatly speed things up when you get to the commit phase.</p><p>All files should be UTF-8 encoded and using LF (not CRLF, yes it&apos;s for you Windows users).</p><h3>Document your code</h3><p>Reach rely on <a href="https://esdoc.org/">esdoc</a> for es6 code documentation. Several npm task exists to generate/serve the doc with hot reload enabled. Use <code>npm run serve</code> to keep an eye on your doc while you code.</p><h3>Test your code</h3><p>Reach uses <a href="https://karma-runner.github.io/0.13/index.html">Karma</a> &amp; <a href="http://jasmine.github.io/">Jasmine</a> to test the code.</p><p>To be able to run the test, you will need to create a <code>.account.json</code> file with your Webcom account credentials at the root of the project.</p><pre><code class="lang-json"><code class="source-code prettyprint">{
+    &quot;WEBCOM_EMAIL&quot;: &quot;&lt;Your webcom account&apos;s email&gt;&quot;,
+    &quot;WEBCOM_PASSWORD&quot;: &quot;&lt;Your webcom account&apos;s password&gt;&quot;
+}</code>
+</code></pre><p>Alternatively, these values can be set as environment variables.</p><p><a href="https://karma-runner.github.io/0.13/index.html">Karma</a> is configured to use your local Chrome &amp; Firefox to run the tests so you have to install at recent version of both Chrome/Chromium &amp; Firefox.</p><p>Run the tests while you code with <code>npm start</code>. If you want to check your coverage, run <code>npm run test:coverage</code>, the report will be in the <code>coverage</code> folder.</p><p>Be advised that the test <em>MUST</em> pass in order to push your modifications.</p><h3>Commit your modifications</h3><h4>Files</h4><p>Even though built files in the <code>dist</code> folder are not in the <code>.gitignore</code> file, they MUST not be committed manually. Reach uses <a href="https://travis-ci.org/webcom-components/reach">travis-ci</a> to generate &amp; publish the library. The version number is computed by <a href="https://github.com/semantic-release/semantic-release">semantic-release</a> based on the commit messages.</p><h4>Messages</h4><p>Reach uses <a href="https://github.com/semantic-release/semantic-release">semantic-release</a> along with <a href="https://github.com/commitizen/cz-cli">commitizen</a> and <a href="https://github.com/kentcdodds/validate-commit-msg">validate-commit-msg</a> to simplify the commit message format convention.</p><p>You will need to install <a href="https://github.com/commitizen/cz-cli">commitizen</a> globally first and then use <code>git cz</code> to commit instead of the traditional <code>git commit -m ...</code>.</p></div>
+        <a data-ice="link" href="manual/faq/CONTRIBUTING.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <h1 data-ice="label" class="manual-color manual-color-changelog" data-section-count="&#x25A0;"><span data-ice="label-inner">Changelog</span></h1>
+      <div class="manual-card">
+        <div data-ice="card"><h1>Changelog</h1><p>The change log for Reach can be found on the repo&apos;s <a href="https://github.com/webcom-components/reach/releases">Release page</a>.</p></div>
+        <a data-ice="link" href="manual/changelog/index.html"></a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/util/Media.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/core/util/</a> Media.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.3% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>25/54</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">29.55% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>13/44</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">87.5% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>7/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">46.3% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>25/54</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*eslint max-params: [2, 5], max-len: [0, 120] */
+import * as Log from './Log';
+import Reach from '../../Reach';
+&nbsp;
+/**
+ * Video resolution presets
+ * @access private
+ * @type {{UHD: {w: number, h: number, min: string}, FHD: {w: number, h: number, min: string, max: string}, HD: {w: number, h: number, min: string, max: string}, SVGA: {w: number, h: number, min: string, max: string}, SD: {w: number, h: number, min: string, max: string}, VGA: {w: number, h: number, max: string}}}
+ */
+const presets = {
+	UHD: {w: 3840, h: 2160, min: 'HD'},
+	FHD: {w: 1920, h: 1080, min: 'HD', max: 'UHD'},
+	HD: {w: 1280, h: 720, min: 'SD', max: 'FHD'},
+	SVGA: {w: 800, h: 600, min: 'VGA', max: 'HD'},
+	SD: {w: 720, h: 576, min: 'VGA', max: 'HD'},
+	VGA: {w: 640, h: 480, max: 'SVGA'}
+};
+&nbsp;
+/**
+ * Assign deviceId to constraint
+ * @param constraint
+ * @param deviceId
+ * @returns {*}
+ */
+const _assignDevice = (constraint, deviceId) =&gt; {
+	<span class="missing-if-branch" title="if path not taken" >I</span>if(constraint &amp;&amp; deviceId) {
+<span class="cstat-no" title="statement not covered" >		return Object.assign(</span>
+			/^((user)|(environment))$/i.test(deviceId) ? {facingMode: deviceId} : {deviceId},
+			constraint === true ? {} : constraint);
+	}
+	return constraint;
+};
+&nbsp;
+/**
+ * Helpers for MediaDevices and MediaStreamConstraints.
+ */
+export default class Media {
+	/**
+	 * facingMode values to use with constraints
+	 * @returns {{USER: string, ENVIRONMENT: string}}
+	 */
+	static get facingMode() {
+		return {
+			USER: 'user',
+			ENVIRONMENT: 'environment'
+		};
+	}
+&nbsp;
+	/**
+	 * Helpers to create a MediaStreamConstraints configuration object
+	 * @param {boolean|MediaTrackConstraints|string} [videoConstraints='HD'] a boolean, a video constraints object or a preset id (UHD, FHD, HD, SVGA, SD, VGA)
+	 * @param {boolean|MediaTrackConstraints} [audioConstraints=true] a boolean or an audio constraints object
+	 * @param {string} [type=ideal] type of constraints for video when using a preset (exact,min,max or ideal)
+	 * @param {string|object} [videoDeviceId] video input device id or facingMode
+	 * @param {string|object} [audioDeviceId] audio input device id
+	 * @returns {object}
+	 * @throws {Error}
+	 *
+	 * @example &lt;caption&gt;HD AudioVideo with default devices&lt;/caption&gt;
+	 * let myConstraints = Reach.media.constraints();
+	 * console.log(myConstraints);
+	 *
+	 * @example &lt;caption&gt;Full HD Video without audio using default devices&lt;/caption&gt;
+	 * let myConstraints = Reach.media.constraints('FHD', false, 'exact');
+	 * console.log(myConstraints);
+	 */
+	static constraints (videoConstraints = 'HD', audioConstraints = true, type = 'ideal', videoDeviceId, audioDeviceId) {
+		let video = videoConstraints;
+		<span class="missing-if-branch" title="else path not taken" >E</span>if (typeof videoConstraints === 'string'){
+			<span class="missing-if-branch" title="else path not taken" >E</span>if(presets[videoConstraints.toUpperCase()]) {
+				const
+					preset = presets[videoConstraints.toUpperCase()],
+					dimConstraint = (dim) =&gt; {
+						<span class="missing-if-branch" title="if path not taken" >I</span>if(/^(min|max|exact)$/.test(type)) {
+							const r = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >							r[type] = preset[dim];</span>
+<span class="cstat-no" title="statement not covered" >							return r;</span>
+						}
+						return {
+							min: preset.min ? presets[preset.min][dim] : <span class="branch-1 cbranch-no" title="branch not covered" >preset[dim],</span>
+							ideal: preset[dim],
+							max: preset.max ? presets[preset.max][dim] : <span class="branch-1 cbranch-no" title="branch not covered" >preset[dim]</span>
+						};
+					};
+				video = {width: dimConstraint('w'), height: dimConstraint('h')};
+			} else {
+<span class="cstat-no" title="statement not covered" >				throw new Error('Unknown Video Resolution preset (UHD, FHD, HD, SVGA, SD, VGA)');</span>
+			}
+		}
+		video = _assignDevice(video, videoDeviceId);
+&nbsp;
+		const audio = _assignDevice(audioConstraints, audioDeviceId);
+&nbsp;
+		Log.d('Media#constraints', {video, audio});
+		return {video, audio};
+	}
+&nbsp;
+	/**
+	 * Init stream display node depending on stream type
+	 * @param {MediaStream} mediaStream The MediaStream to display
+	 * @param {Element} container Container node for streams
+	 * @param {Element} previous Previous node for the stream
+	 * @param {number} [volume=.7] the default volume
+	 * @return {Element}
+	 */
+	static attachStream(mediaStream, container, previous, volume = .7) <span class="fstat-no" title="function not covered" >{</span>
+		let tagName = <span class="cstat-no" title="statement not covered" >'';</span>
+<span class="cstat-no" title="statement not covered" >		if(mediaStream.getVideoTracks().length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >			tagName = 'video';</span>
+		} else <span class="cstat-no" title="statement not covered" >if(mediaStream.getAudioTracks().length &gt; 0) {</span>
+<span class="cstat-no" title="statement not covered" >			tagName = 'audio';</span>
+		}
+<span class="cstat-no" title="statement not covered" >		Log.d('Media#attachStream', mediaStream, tagName);</span>
+<span class="cstat-no" title="statement not covered" >		if (tagName.length &gt; 0) {</span>
+			let _node = <span class="cstat-no" title="statement not covered" >previous;</span>
+<span class="cstat-no" title="statement not covered" >			if (!_node || _node.tagName.toLowerCase() !== tagName) {</span>
+<span class="cstat-no" title="statement not covered" >				_node = document.createElement(tagName);</span>
+<span class="cstat-no" title="statement not covered" >				_node.autoplay = true;</span>
+				// set these attributes in order to launch the video on IOS
+<span class="cstat-no" title="statement not covered" >				if (Reach.browser.browser === 'safari') {</span>
+<span class="cstat-no" title="statement not covered" >					_node.setAttribute('playsinline',true);</span>
+<span class="cstat-no" title="statement not covered" >					_node.setAttribute('muted',true);</span>
+				}
+<span class="cstat-no" title="statement not covered" >				_node.style.borderRadius = '1px';</span>
+			}
+<span class="cstat-no" title="statement not covered" >			if (container) {</span>
+<span class="cstat-no" title="statement not covered" >				if (previous &amp;&amp; previous !== _node) {</span>
+<span class="cstat-no" title="statement not covered" >					container.replaceChild(_node, previous);</span>
+				} else <span class="cstat-no" title="statement not covered" >if (!previous) {</span>
+<span class="cstat-no" title="statement not covered" >					container.appendChild(_node);</span>
+				}
+			}
+<span class="cstat-no" title="statement not covered" >			_node.srcObject = mediaStream;</span>
+			// disabled doesn't seem to be needed
+			// _node.disabled = false;
+<span class="cstat-no" title="statement not covered" >			_node.volume = volume;</span>
+<span class="cstat-no" title="statement not covered" >			return _node;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		return previous;</span>
+	}
+&nbsp;
+	/**
+	 * List available input devices
+	 * @return {Promise&lt;{audioinput: MediaDeviceInfo[], videoinput: MediaDeviceInfo[]}&gt;}
+	 *
+	 * @example
+	 * Reach.media.devices().then(devices =&gt; {
+	 *  // Video cameras
+	 *  console.log(devices.videoinput);
+	 *  // Audio mics
+	 *  console.log(devices.audioinput);
+	 * });
+	 */
+	static devices () {
+		return navigator.mediaDevices.enumerateDevices()
+			.then(devices =&gt; {
+				const r = {};
+				devices.forEach(device =&gt; {
+					if (!r[device.kind]) {
+						r[device.kind] = [];
+					}
+					r[device.kind].push(device);
+				});
+				Log.d('Media#devices', r);
+				return r;
+			})
+			.catch(Log.r('Media#devices'));
+	}
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 14:53:54 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

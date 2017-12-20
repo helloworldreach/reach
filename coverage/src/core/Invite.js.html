@@ -1,0 +1,899 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/Invite.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/core/</a> Invite.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">1.56% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/64</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">1.61% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/62</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {ONGOING, ACCEPTED, REJECTED, CANCELED} from './util/constants';
+import * as DataSync from './util/DataSync';
+import * as Log from './util/Log';
+import cache from './util/cache';
+import Room from './Room';
+import * as Events from '../definitions/Events';
+&nbsp;
+/**
+ * Update
+ * @param {Invite} invite The invite
+ * @param {string} status The new status
+ * @param {string} [reason=null] The reason (a message)
+ * @param {object} [_ended=null]
+ * @access private
+ * @returns {Promise&lt;Invite, Error&gt;}
+ */
+const update = (invite, status, reason = null, _ended = null) =&gt; <span class="fstat-no" title="function not covered" >{</span>
+	const values = <span class="cstat-no" title="statement not covered" >{</span>
+		status,
+		reason,
+		_ended
+	};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >	if(invite.status !== ONGOING) {</span>
+<span class="cstat-no" title="statement not covered" >		return Promise.reject(new Error('This invitation has already been answered'));</span>
+	}
+<span class="cstat-no" title="statement not covered" >	return DataSync.update(`_/invites/${invite.to}/${invite.uid}`, values)</span>
+		.then(() =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >			Object.keys(values).forEach(prop =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				invite[prop] = values[prop];</span>
+			});
+<span class="cstat-no" title="statement not covered" >			return Room.get(invite.room);</span>
+		})
+		.then(room =&gt; (<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >{room, invite})</span></span>)
+		.catch(Log.r('Invite_update'));
+};
+&nbsp;
+/**
+ * Invitation
+ * @public
+ */
+export default class Invite {
+&nbsp;
+	/**
+	 * Create an invite
+	 * @param {Webcom/api.DataSnapshot|object} snapData The data snapshot
+	 * @access protected
+	 */
+	constructor(snapData) <span class="fstat-no" title="function not covered" >{</span>
+		let values = <span class="cstat-no" title="statement not covered" >snapData;</span>
+<span class="cstat-no" title="statement not covered" >		if(snapData &amp;&amp; snapData.val &amp;&amp; typeof snapData.val === 'function'){</span>
+<span class="cstat-no" title="statement not covered" >			values = Object.assign({}, snapData.val(), {uid: snapData.name(), to: snapData.ref().parent().name()});</span>
+		}
+		/**
+		 * Invite's unique id
+		 * @type string
+		 */
+<span class="cstat-no" title="statement not covered" >		this.uid = values.uid;</span>
+		/**
+		 * Invite's sender uid
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.from = values.from;</span>
+		/**
+		 * Invitee's uid
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.to = values.to;</span>
+		/**
+		 * The id of the room associated to the invite
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.room = values.room;</span>
+		/**
+		 * The invitation status :
+		 * - ONGOING - The receiver has not yet responded to the invitation
+		 * - ACCEPTED - The receiver has accepted the invitation
+		 * - REJECTED - The receiver has rejected the invitation
+		 * - CANCELED - The sender canceled the invitation
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.status = values.status;</span>
+		/**
+		 * Invite message. This will be either a custom message if the status is ONGOING or a reason when status is CANCELED|REJECTED.
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.topic = values.topic;</span>
+		/**
+		 * Invite creation timestamp
+		 * @type {number}
+		 */
+<span class="cstat-no" title="statement not covered" >		this._created = values._created;</span>
+		/**
+		 * Invite expiration timestamp
+		 * @type {number}
+		 */
+<span class="cstat-no" title="statement not covered" >		this._ended = values._ended;</span>
+		/**
+		 * Invite events callbacks
+		 * @type {{}}
+		 * @private
+		 */
+<span class="cstat-no" title="statement not covered" >		this._callbacks = {};</span>
+	}
+&nbsp;
+	/**
+	 * Is this invitation waiting for a reply ?
+	 * @type {boolean}
+	 */
+	get isOnGoing() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this.status === ONGOING;</span>
+	}
+&nbsp;
+	/**
+	 * Was this invitation rejected ?
+	 * @type {boolean}
+	 */
+	get isRejected() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this.status === REJECTED;</span>
+	}
+&nbsp;
+	/**
+	 * Was this invitation accepted ?
+	 * @type {boolean}
+	 */
+	get isAccepted() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this.status === ACCEPTED;</span>
+	}
+&nbsp;
+	/**
+	 * Was this invitation canceled ?
+	 * @type {boolean}
+	 */
+	get isCanceled() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this.status === CANCELED;</span>
+	}
+&nbsp;
+	/**
+	 * Cancels the invitation. Only the sender can cancel the invitation.
+	 * @param {string} [reason] The reason the sender is canceling the invite
+	 * @return {Promise&lt;Invite&gt;}
+	 */
+	cancel(reason) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return update(this, CANCELED, reason, DataSync.ts());</span>
+	}
+&nbsp;
+	/**
+	 * Rejects the invitation. Only the receiver can reject the invitation.
+	 * @param {string} [reason] The reason the receiver is rejecting the invite
+	 * @return {Promise&lt;Invite&gt;}
+	 */
+	reject(reason) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return update(this, REJECTED, reason, DataSync.ts());</span>
+	}
+&nbsp;
+	/**
+	 * Accept the invitation. Only the receiver can accept the invitation.
+	 * @return {Promise&lt;Invite&gt;}
+	 */
+	accept() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return update(this, ACCEPTED);</span>
+	}
+&nbsp;
+	/**
+	 * Register a callback for a status update
+	 * @param {string} status Can be:
+	 * - ACCEPTED
+	 * - REJECTED
+	 * - CANCELED
+	 * @param {function} callback
+	 */
+	on(status, callback) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(Events.invite.supports(status)) {</span>
+			// Register callback
+<span class="cstat-no" title="statement not covered" >			if (!this._callbacks[status]) {</span>
+<span class="cstat-no" title="statement not covered" >				this._callbacks[status] = [];</span>
+			}
+<span class="cstat-no" title="statement not covered" >			this._callbacks[status].push(callback);</span>
+			// Defined listener &amp; subscribe if needed
+<span class="cstat-no" title="statement not covered" >			if (!this._listener) {</span>
+				/**
+				 * Invite status update callback
+				 * @type {function}
+				 * @private
+				 */
+<span class="cstat-no" title="statement not covered" >				this._listener = snapData =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+					const updated = <span class="cstat-no" title="statement not covered" >snapData.val();</span>
+<span class="cstat-no" title="statement not covered" >					if (updated !== null &amp;&amp; updated !== this.status) {</span>
+<span class="cstat-no" title="statement not covered" >						this.status = updated;</span>
+<span class="cstat-no" title="statement not covered" >						(this._callbacks[updated] || []).forEach(cb =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >							cb(this);</span>
+						});
+					}
+				};
+<span class="cstat-no" title="statement not covered" >				DataSync.on(`_/invites/${this.to}/${this.uid}/status`, 'value', this._listener.bind(this));</span>
+			}
+		}
+	}
+&nbsp;
+	/**
+	 * Register a callback for all status change events
+	 * @param {function} callback
+	 */
+	onStatusChange(callback) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		[ACCEPTED, REJECTED, CANCELED].forEach(event =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >			this.on(event, callback);</span>
+		});
+	}
+&nbsp;
+	/**
+	 * Un-register a callback for a status update
+	 * @param {string} [status] Can be:
+	 * - ACCEPTED
+	 * - REJECTED
+	 * - CANCELED
+	 * - null This will un-register all callbacks
+	 * @param {function} [callback]
+	 */
+	off(status, callback) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(!status) {</span>
+<span class="cstat-no" title="statement not covered" >			this._callbacks = {};</span>
+		} else <span class="cstat-no" title="statement not covered" >if(this._callbacks[status]) {</span>
+<span class="cstat-no" title="statement not covered" >			if(callback) {</span>
+				const idx = <span class="cstat-no" title="statement not covered" >this._callbacks[status].findIndex(cb =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >cb === callback)</span></span>;</span>
+<span class="cstat-no" title="statement not covered" >				if (idx &gt;= 0) {</span>
+<span class="cstat-no" title="statement not covered" >					this._callbacks.splice(idx, 1);</span>
+				}
+			} else {
+<span class="cstat-no" title="statement not covered" >				this._callbacks[status] = [];</span>
+			}
+		}
+<span class="cstat-no" title="statement not covered" >		if(![CANCELED, ACCEPTED, REJECTED].some(event =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this._callbacks[event] &amp;&amp; this._callbacks[event].length &gt; 0)</span></span>){</span>
+<span class="cstat-no" title="statement not covered" >			DataSync.off(`_/invites/${this.to}/${this.uid}/status`, 'value');</span>
+		}
+	}
+&nbsp;
+	/**
+	 * Un-register a callback for all status change events
+	 * @param {function} [callback]
+	 */
+	offStatusChange(callback) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(!callback) {</span>
+<span class="cstat-no" title="statement not covered" >			this.off();</span>
+		} else {
+<span class="cstat-no" title="statement not covered" >			[ACCEPTED, REJECTED, CANCELED].forEach(event =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				this.off(event, callback);</span>
+			});
+		}
+	}
+&nbsp;
+	/**
+	 * Create the invitation &amp; add the user to the participants list
+	 * @access protected
+	 * @param {User} invitee The user to invite
+	 * @param {Room} room The room to invite the user to
+	 * @param {string} [message] A message for the invitee
+	 */
+	static send(invitee, room, message = null) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(!cache.user) {</span>
+<span class="cstat-no" title="statement not covered" >			return Promise.reject(new Error('Only an authenticated user can send an invite.'));</span>
+		}
+&nbsp;
+		const inviteMetaData = <span class="cstat-no" title="statement not covered" >{</span>
+			from: cache.user.uid,
+			room: room.uid,
+			status: ONGOING,
+			_created: DataSync.ts(),
+			topic: message
+		};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		return DataSync.push(`_/invites/${invitee.uid}`, inviteMetaData)</span>
+			.then(inviteRef =&gt; <span class="fstat-no" title="function not covered" >{</span>
+				const inviteId = <span class="cstat-no" title="statement not covered" >inviteRef.name();</span>
+<span class="cstat-no" title="statement not covered" >				return new Invite(Object.assign({uid: inviteId, to: invitee.uid}, inviteMetaData));</span>
+			})
+			.catch(Log.r('Invite#send'));
+	}
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 14:53:54 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

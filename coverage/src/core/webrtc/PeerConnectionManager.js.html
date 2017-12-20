@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/webrtc/PeerConnectionManager.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/core/webrtc/</a> PeerConnectionManager.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.13% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.23% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/31</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import PeerConnection from './PeerConnection';
+import cache from '../util/cache';
+import * as Log from '../util/Log';
+import * as DataSync from '../util/DataSync';
+&nbsp;
+const getStackId = (id1, id2) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >id1.localeCompare(id2, 'en-us') &gt; 0 ? `${id1}-${id2}` :`${id2}-${id1}`;</span></span>
+&nbsp;
+/**
+ * @access protected
+ */
+export default class PeerConnectionManager {
+	/**
+	 * Constructor
+	 * @access protected
+	 */
+	constructor() <span class="fstat-no" title="function not covered" >{</span>
+		/**
+		 * WebRTC stacks
+		 * @type {{*: {*: PeerConnection}}}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.stacks = {};</span>
+	}
+&nbsp;
+&nbsp;
+	/**
+	 * Get a PeerConnection object for a specific stream
+	 * @param {Local|Remote} stream
+	 * @param {Remote|{to: string, device:string}} remote
+	 * @param {boolean} publish
+	 * @return {*}
+	 */
+	getPeerConnection(stream, remote, publish) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(!cache.user) {</span>
+<span class="cstat-no" title="statement not covered" >			return Promise.reject(new Error('Only an authenticated user can get a PeerConnection\'s object.'));</span>
+		}
+		const stackId = <span class="cstat-no" title="statement not covered" >getStackId(remote.device, cache.device);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		if(this.stacks[stackId] &amp;&amp; this.stacks[stackId][stream.uid]) {</span>
+<span class="cstat-no" title="statement not covered" >			return Promise.resolve(this.stacks[stackId][stream.uid]);</span>
+		}
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		if(!this.stacks[stackId]) {</span>
+<span class="cstat-no" title="statement not covered" >			this.stacks[stackId] = {};</span>
+		}
+&nbsp;
+		const users = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >		users[cache.user.uid] = true;</span>
+<span class="cstat-no" title="statement not covered" >		users[remote.from || remote.to] = true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		return DataSync.update(`_/webrtc/${stackId}`, users)</span>
+			.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >new PeerConnection(stackId, stream.uid, remote.device, publish))</span></span>
+			.then(pc =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnectionManager~getPeerConnection', {stackId, streamId: stream.uid, pc});</span>
+<span class="cstat-no" title="statement not covered" >				this.stacks[stackId][stream.uid] = pc;</span>
+<span class="cstat-no" title="statement not covered" >				return pc;</span>
+			})
+			.catch(Log.r('PeerConnectionManager~getPeerConnection'));
+	}
+&nbsp;
+	/**
+	 * Create offer for a stream to a subscriber
+	 * @param {Local} localStream
+	 * @param {object} subscriber
+	 * @return {Promise.&lt;PeerConnection&gt;}
+	 */
+	offer(localStream, subscriber) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('PeerConnectionManager~offer', {localStream, subscriber});</span>
+<span class="cstat-no" title="statement not covered" >		return this.getPeerConnection(localStream, subscriber, true)</span>
+			.then(pc =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >pc.offer(localStream.media))</span></span>;
+	}
+&nbsp;
+	/**
+	 * Answer to the offer from the publisher
+	 * @param {Remote} remoteStream
+	 * @param {Element} htmlElement
+	 * @return {*|Promise.&lt;PeerConnection&gt;}
+	 */
+	answer(remoteStream, htmlElement) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('PeerConnectionManager~answer', {remoteStream, htmlElement});</span>
+<span class="cstat-no" title="statement not covered" >		return this.getPeerConnection(remoteStream, remoteStream, false)</span>
+			.then(pc =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >pc.answer(htmlElement))</span></span>;
+	}
+&nbsp;
+	/**
+	 * Close a PeerConnection
+	 * @param streamId
+	 * @param remoteDevice
+	 * @return {*}
+	 */
+	close(streamId, remoteDevice) <span class="fstat-no" title="function not covered" >{</span>
+		const stackId = <span class="cstat-no" title="statement not covered" >getStackId(remoteDevice, cache.device),</span>
+			pc = <span class="cstat-no" title="statement not covered" >this.stacks[stackId] ? this.stacks[stackId][streamId] : null;</span>
+<span class="cstat-no" title="statement not covered" >		if(pc){</span>
+<span class="cstat-no" title="statement not covered" >			pc.close();</span>
+<span class="cstat-no" title="statement not covered" >			this.stacks[stackId][streamId] = null;</span>
+<span class="cstat-no" title="statement not covered" >			delete this.stacks[stackId][streamId];</span>
+<span class="cstat-no" title="statement not covered" >			return pc;</span>
+		}
+<span class="cstat-no" title="statement not covered" >		return false;</span>
+	}
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 14:53:54 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

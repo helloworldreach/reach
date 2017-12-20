@@ -1,0 +1,1556 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/webrtc/PeerConnection.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/core/webrtc/</a> PeerConnection.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.49% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>10/182</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/80</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/49</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.68% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>10/176</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*global RTCPeerConnection*/
+/*global RTCRtpSender*/
+import cache from '../util/cache';
+import * as Log from '../util/Log';
+import Media from '../util/Media';
+import * as DataSync from '../util/DataSync';
+import {OPENED, CLOSING, CLOSED} from '../util/constants';
+import 'core-js/fn/array/find';
+&nbsp;
+const DtlsSrtpKeyAgreement = {DtlsSrtpKeyAgreement: true};
+const sdpConstraints = receive =&gt; (<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >{OfferToReceiveAudio: receive, OfferToReceiveVideo: receive})</span></span>;
+/**
+ * ICE connection status : disconnected
+ * @constant
+ * @type {string}
+ */
+const ICE_CONNECTION_STATE_DISCONNECTED = 'disconnected';
+/**
+ * ICE connection status : connected
+ * @constant
+ * @type {string}
+ */
+const ICE_CONNECTION_STATE_CONNECTED= 'connected';
+/**
+ * ICE connection status : completed
+ * @constant
+ * @type {string}
+ */
+const ICE_CONNECTION_STATE_COMPLETED = 'completed';
+/**
+ * ICE connection status : checking
+ * @constant
+ * @type {string}
+ */
+const ICE_CONNECTION_STATE_CHECKING = 'checking';
+/**
+ * ICE connection status : closed
+ * @constant
+ * @type {string}
+ */
+const ICE_CONNECTION_STATE_CLOSED = 'closed';
+/**
+ * ICE connection status : failed
+ * @constant
+ * @type {string}
+ */
+const ICE_CONNECTION_STATE_FAILED = 'failed';
+/**
+ * ICE connection status : another status
+ * @constant
+ * @type {string}
+ */
+const ICE_CONNECTION_STATE_OTHER= 'other';
+/**
+ * @ignore
+ */
+const _toJSON = o =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >o.toJSON &amp;&amp; typeof o.toJSON === 'function' ? o.toJSON() : o;</span></span>
+/**
+ * The PeerConnection. A PeerConnection will only concern one MediaStream.
+ * @class PeerConnection
+ */
+export default class PeerConnection {
+	/**
+	 * @access protected
+	 * @param {string} stackId The WebRTC stack ID
+	 * @param {string} streamId The Stream UID
+	 * @param {string} remoteDevice The remote device's UID
+	 * @param {boolean} publish Publish or Subscribe ?
+	 */
+	constructor(stackId, streamId, remoteDevice, publish) <span class="fstat-no" title="function not covered" >{</span>
+		/**
+		 * The stack identifier. Used to identify exchanges between 2 devices
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.stackId = stackId;</span>
+		/**
+		 * The stream id. (One stream per RTCPeerConnection)
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.streamId = streamId;</span>
+		/**
+		 * The remote device Id
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.remoteDevice = remoteDevice;</span>
+		/**
+		 * Path for local signalization
+		 * @access private
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this._localPath = `_/webrtc/${this.stackId}/${this.streamId}/${cache.device}`;</span>
+		/**
+		 * Path for local signalization
+		 * @access private
+		 * @type {string}
+		 */
+<span class="cstat-no" title="statement not covered" >		this._remotePath = `_/webrtc/${this.stackId}/${this.streamId}/${this.remoteDevice}`;</span>
+		/**
+		 * Indicates if the PeerConnection has been established. (Useful for renegotiation).
+		 * @type {boolean}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.negotiated = false;</span>
+		/**
+		 * The DOM element where the remote MediaStream will be displayed
+		 * @type {Element}
+		 * @protected
+		 */
+<span class="cstat-no" title="statement not covered" >		this.node = null;</span>
+		/**
+		 * The DOM element containg the media element
+		 * @type {Element}
+		 * @protected
+		 */
+<span class="cstat-no" title="statement not covered" >		this.container = null;</span>
+		/**
+		 * The actual RTCPeerConnection
+		 * @type {RTCPeerConnection}
+		 */
+<span class="cstat-no" title="statement not covered" >		this.pc = new RTCPeerConnection(</span>
+			{
+				iceServers: cache.config.iceServers
+			},
+			{
+				optional: [DtlsSrtpKeyAgreement],
+				mandatory: sdpConstraints(!publish)
+			}
+		);
+		// Handle ICE candidates
+<span class="cstat-no" title="statement not covered" >		this.pc.onicecandidate = e =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >			if (!this.negotiated &amp;&amp; e.candidate) {</span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnection~onicecandidate', e.candidate);</span>
+<span class="cstat-no" title="statement not covered" >				DataSync.push(`${this._localPath}/ice`, _toJSON(e.candidate));</span>
+			}
+		};
+<span class="cstat-no" title="statement not covered" >		this.pc.oniceconnectionstatechange = () =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >			Log.d('PeerConnection~oniceconnectionstatechange', this.pc);</span>
+			const iceConnectionState = <span class="cstat-no" title="statement not covered" >this.pc.iceConnectionState;</span>
+<span class="cstat-no" title="statement not covered" >			switch (iceConnectionState) {</span>
+				case ICE_CONNECTION_STATE_CHECKING:
+					// Nothing to do yet
+<span class="cstat-no" title="statement not covered" >					break;</span>
+				case ICE_CONNECTION_STATE_CONNECTED:
+<span class="cstat-no" title="statement not covered" >					this._attachStream();</span>
+<span class="cstat-no" title="statement not covered" >					this._remoteICECandidates(false);</span>
+<span class="cstat-no" title="statement not covered" >					break;</span>
+				case ICE_CONNECTION_STATE_COMPLETED:
+<span class="cstat-no" title="statement not covered" >					this._remoteICECandidates(false);</span>
+<span class="cstat-no" title="statement not covered" >					break;</span>
+				case ICE_CONNECTION_STATE_DISCONNECTED:
+				case ICE_CONNECTION_STATE_FAILED:
+<span class="cstat-no" title="statement not covered" >					Log.e('PeerConnection~stateDisconnected', 'Disconnect PeerConnection');</span>
+<span class="cstat-no" title="statement not covered" >					break;</span>
+				case ICE_CONNECTION_STATE_CLOSED:
+<span class="cstat-no" title="statement not covered" >					Log.d('PeerConnection~stateclosed', 'Close PeerConnection');</span>
+<span class="cstat-no" title="statement not covered" >					this.close();</span>
+<span class="cstat-no" title="statement not covered" >					break;</span>
+			}
+<span class="cstat-no" title="statement not covered" >			this.negotiated = this.negotiated || this.isConnected;</span>
+		};
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		this.pc.onicegatheringstatechange = () =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >			Log.d('PeerConnection~onicegatheringstatechange', this.pc.iceGatheringState);</span>
+		};
+&nbsp;
+		/**
+		 * PeerConnection status
+		 * @type {string}
+		 * @private
+		 */
+<span class="cstat-no" title="statement not covered" >		this._status = OPENED;</span>
+	}
+&nbsp;
+	/**
+	 * Toggle ICE Candidates discovery
+	 * @access private
+	 * @param {boolean} listen Indicates if we should listen to new ICE candidates
+	 */
+	_remoteICECandidates(listen) <span class="fstat-no" title="function not covered" >{</span>
+		const
+			path = <span class="cstat-no" title="statement not covered" >`${this._remotePath}/ice`,</span>
+			event = <span class="cstat-no" title="statement not covered" >'child_added';</span>
+<span class="cstat-no" title="statement not covered" >		if(listen) {</span>
+			// don't listen to ice candidates if pc is already up (renegotiation)
+<span class="cstat-no" title="statement not covered" >			DataSync.on(path, event, snap =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+				const candidate = <span class="cstat-no" title="statement not covered" >snap.val();</span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnection~addIceCandidate', candidate);</span>
+<span class="cstat-no" title="statement not covered" >				this.pc.addIceCandidate(new RTCIceCandidate(candidate));</span>
+			});
+		} else {
+<span class="cstat-no" title="statement not covered" >			DataSync.off(path, event);</span>
+		}
+	}
+&nbsp;
+	/**
+	 * Attach the remote MediaStream to a node
+	 * @access private
+	 */
+	_attachStream () <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(this.remoteStream &amp;&amp; this.isConnected) {</span>
+<span class="cstat-no" title="statement not covered" >			this.node = Media.attachStream(this.remoteStream, this.container, this.node);</span>
+<span class="cstat-no" title="statement not covered" >			this.node.muted = false;</span>
+		}
+	}
+&nbsp;
+	/**
+	 * The remote MediaStream
+	 * @access protected
+	 * @type {MediaStream}
+	 */
+	set remoteStream (stream) <span class="fstat-no" title="function not covered" >{</span>
+		/**
+		 * @ignore
+		 */
+<span class="cstat-no" title="statement not covered" >		this._remoteStream = stream;</span>
+<span class="cstat-no" title="statement not covered" >		this._attachStream();</span>
+	}
+&nbsp;
+	/**
+	 * The remote MediaStream
+	 * @type {MediaStream}
+	 */
+	get remoteStream () <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this._remoteStream;</span>
+	}
+&nbsp;
+	/**
+	 * Indicates if the PeerConnection is established based on ICE connection state
+	 * @returns {boolean}
+	 */
+	get isConnected () <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		return this.pc &amp;&amp;</span>
+			!!~[
+				ICE_CONNECTION_STATE_CONNECTED,
+				ICE_CONNECTION_STATE_COMPLETED,
+				ICE_CONNECTION_STATE_OTHER
+			].indexOf(this.pc.iceConnectionState);
+	}
+&nbsp;
+	/**
+	 * Init RTCPeerConnection for subscribers
+	 * @access protected
+	 * @param htmlElement
+	 * @returns {Promise.&lt;PeerConnection&gt;}
+	 */
+	answer(htmlElement) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.i('PeerConnection~answer', {htmlElement, peerConnection: this});</span>
+<span class="cstat-no" title="statement not covered" >		this.container = htmlElement;</span>
+<span class="cstat-no" title="statement not covered" >		if(Object.getOwnPropertyDescriptor(RTCPeerConnection.prototype, 'ontrack')) {</span>
+<span class="cstat-no" title="statement not covered" >			this.pc.ontrack = e =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnection~ontrack', e.streams[0]);</span>
+<span class="cstat-no" title="statement not covered" >				this.remoteStream = e.streams[0];</span>
+			};
+		} else {
+<span class="cstat-no" title="statement not covered" >			this.pc.onaddstream = e =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnection~onaddstream', e.stream);</span>
+<span class="cstat-no" title="statement not covered" >				this.remoteStream = e.stream;</span>
+			};
+		}
+&nbsp;
+		// Listen to SDP offer
+<span class="cstat-no" title="statement not covered" >		DataSync.on(`${this._remotePath}/sdp`, 'value', snap =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+			const sdpOffer = <span class="cstat-no" title="statement not covered" >snap.val();</span>
+<span class="cstat-no" title="statement not covered" >			Log.d('Offer', sdpOffer);</span>
+<span class="cstat-no" title="statement not covered" >			if(sdpOffer != null) {</span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnection~offered', sdpOffer);</span>
+<span class="cstat-no" title="statement not covered" >				this.pc.setRemoteDescription(sdpOffer)</span>
+					.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >Log.d('PeerConnection~remoteDescription', this.pc.remoteDescription))</span></span>
+					.then(() =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >						if (/^offer$/.test(this.pc.remoteDescription.type)) {</span>
+<span class="cstat-no" title="statement not covered" >							return this.pc.createAnswer();</span>
+						}
+<span class="cstat-no" title="statement not covered" >						return Promise.reject(new Error('SDP is not an offer'));</span>
+					})
+					.then(description =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this._setPreferredCodecs(description))</span></span>
+					.then(description =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this.pc.setLocalDescription(description))</span></span>
+					.then(() =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >						Log.d('PeerConnection~localDescription', this.pc.localDescription);</span>
+<span class="cstat-no" title="statement not covered" >						this._remoteICECandidates(true);</span>
+					})
+					.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >DataSync.update(`${this._localPath}/sdp`, _toJSON(this.pc.localDescription)))</span></span>
+					.catch(Log.r('PeerConnection~localDescription'));
+			}
+		});
+&nbsp;
+<span class="cstat-no" title="statement not covered" >		return Promise.resolve(this);</span>
+	}
+&nbsp;
+	/**
+	 * Init RTCPeerConnection for publishers
+	 * @access protected
+	 * @param stream
+	 * @returns {Promise.&lt;PeerConnection&gt;}
+	 */
+	offer(stream) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.i('PeerConnection~offer', {stream, peerConnection: this});</span>
+		let sendTimeout;
+<span class="cstat-no" title="statement not covered" >		return new Promise((resolve, reject) =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >			this.pc.onnegotiationneeded = () =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnection~onnegotiationneeded');</span>
+				// Debounce send (renegotiation triggers multiple negotiationneeded events)
+<span class="cstat-no" title="statement not covered" >				if(sendTimeout) {</span>
+<span class="cstat-no" title="statement not covered" >					clearTimeout(sendTimeout);</span>
+<span class="cstat-no" title="statement not covered" >					sendTimeout = null;</span>
+				}
+<span class="cstat-no" title="statement not covered" >				sendTimeout = setTimeout(() =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >					sendTimeout = null;</span>
+<span class="cstat-no" title="statement not covered" >					this._sendOffer()</span>
+						.then(() =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >							resolve(this);</span>
+						})
+						.catch(e =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >							Log.d('PeerConnection~offer', e);</span>
+<span class="cstat-no" title="statement not covered" >							reject(e);</span>
+						});
+				}, 20);
+			};
+<span class="cstat-no" title="statement not covered" >			DataSync.on(`${this._remotePath}/sdp`, 'value', snap =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+				const sdpAnswer = <span class="cstat-no" title="statement not covered" >snap.val();</span>
+<span class="cstat-no" title="statement not covered" >				if(sdpAnswer != null) {</span>
+<span class="cstat-no" title="statement not covered" >					Log.d('PeerConnection~offer#answered', sdpAnswer);</span>
+<span class="cstat-no" title="statement not covered" >					this.pc.setRemoteDescription(sdpAnswer)</span>
+						.then(() =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >							Log.d('PeerConnection~offer#remoteDescription', this.pc.remoteDescription);</span>
+<span class="cstat-no" title="statement not covered" >							this._remoteICECandidates(true);</span>
+						})
+						.catch(Log.e.bind(Log, 'PeerConnection~remoteDescription'));
+				}
+			});
+<span class="cstat-no" title="statement not covered" >			this._alterStream(stream, 'add');</span>
+		});
+	}
+&nbsp;
+	/**
+	 * Create SDP offer and push it
+	 * @returns {Promise}
+	 * @private
+	 */
+	_sendOffer() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('PeerConnection~_sendOffer');</span>
+<span class="cstat-no" title="statement not covered" >		return this.pc.createOffer()</span>
+			.then(description =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this._setPreferredCodecs(description))</span></span>
+			.then(description =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this.pc.setLocalDescription(description))</span></span>
+			.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >Log.d('PeerConnection~renegotiate#localDescription', this.pc.localDescription))</span></span>
+			.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >DataSync.update(`${this._localPath}/sdp`, _toJSON(this.pc.localDescription)))</span></span>;
+	}
+&nbsp;
+	/**
+	 * Add/Remove tracks to the PeerConnection stream
+	 * @param {MediaStream} stream
+	 * @param {string} method
+	 * @private
+	 */
+	_alterStream(stream, method) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(Object.getOwnPropertyDescriptor(RTCPeerConnection.prototype, `${method}Track`)) {</span>
+<span class="cstat-no" title="statement not covered" >			if (method === 'add') {</span>
+<span class="cstat-no" title="statement not covered" >				stream.getTracks().forEach(track =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this.pc[`${method}Track`](track, stream),</span></span> this);</span>
+			} else {
+<span class="cstat-no" title="statement not covered" >				this.pc.getSenders().forEach(sender =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >this.pc[`${method}Track`](sender),</span></span> this);</span>
+			}
+		} else {
+<span class="cstat-no" title="statement not covered" >			this.pc[`${method}Stream`](stream);</span>
+		}
+	}
+&nbsp;
+	/**
+	 * Restart SDP negotiation following a MediaStream change
+	 * @access protected
+	 * @param {MediaStream} oldStream
+	 * @param {MediaStream} newStream
+	 */
+	renegotiate(oldStream, newStream) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		Log.d('PeerConnection~renegotiate');</span>
+<span class="cstat-no" title="statement not covered" >		if((Object.getOwnPropertyDescriptor(RTCPeerConnection.prototype, 'getSenders'))</span>
+			&amp;&amp; ('RTCRtpSender' in window)
+			&amp;&amp; Object.getOwnPropertyDescriptor(RTCRtpSender.prototype, 'replaceTrack')){
+&nbsp;
+			// mozRTCPeerConnection implementation
+<span class="cstat-no" title="statement not covered" >			this.pc.getSenders().forEach(sender =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+				let newTracks;
+<span class="cstat-no" title="statement not covered" >				switch (sender.track.kind) {</span>
+					case 'audio':
+<span class="cstat-no" title="statement not covered" >						newTracks = newStream.getAudioTracks();</span>
+<span class="cstat-no" title="statement not covered" >						break;</span>
+					case 'video':
+<span class="cstat-no" title="statement not covered" >						newTracks = newStream.getVideoTracks();</span>
+<span class="cstat-no" title="statement not covered" >						break;</span>
+					default:
+<span class="cstat-no" title="statement not covered" >						newTracks = [];</span>
+				}
+<span class="cstat-no" title="statement not covered" >				if(newTracks.length) {</span>
+<span class="cstat-no" title="statement not covered" >					sender.replaceTrack(newTracks[0]);</span>
+				}
+			});
+<span class="cstat-no" title="statement not covered" >			this._sendOffer()</span>
+				.catch(e =&gt; <span class="fstat-no" title="function not covered" >{<span class="cstat-no" title="statement not covered" >Log.d('PeerConnection~renegotiate', e);}</span>)</span>;
+		} else {
+<span class="cstat-no" title="statement not covered" >			this._alterStream(oldStream, 'remove');</span>
+<span class="cstat-no" title="statement not covered" >			this._alterStream(newStream, 'add');</span>
+		}
+	}
+&nbsp;
+	/**
+	 * Close the PeerConnection and stop listening to SDP messages
+	 * @access protected
+	 */
+	close() <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(this._status === OPENED) {</span>
+<span class="cstat-no" title="statement not covered" >			this._status = CLOSING;</span>
+			// Stop display
+<span class="cstat-no" title="statement not covered" >			if (this.node) {</span>
+<span class="cstat-no" title="statement not covered" >				this.node.stop &amp;&amp; this.node.stop();</span>
+<span class="cstat-no" title="statement not covered" >				this.node.srcObject = null;</span>
+<span class="cstat-no" title="statement not covered" >				this.container.removeChild(this.node);</span>
+<span class="cstat-no" title="statement not covered" >				this.node = null;</span>
+			}
+			// Stop listening to remote ICE candidates
+<span class="cstat-no" title="statement not covered" >			this._remoteICECandidates(false);</span>
+			// Stop listening to SDP messages
+<span class="cstat-no" title="statement not covered" >			DataSync.off(`${this._remotePath}/sdp`, 'value');</span>
+			// Remove data
+<span class="cstat-no" title="statement not covered" >			DataSync.remove(this._localPath);</span>
+			// Close PeerConnection
+<span class="cstat-no" title="statement not covered" >			if (this.pc &amp;&amp; this.pc.signalingState !== 'closed') {</span>
+<span class="cstat-no" title="statement not covered" >				this.pc.onsignalingstatechange = () =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >					if(this.pc.signalingState !== 'closed') {</span>
+<span class="cstat-no" title="statement not covered" >						this._status = CLOSED;</span>
+					}
+				};
+<span class="cstat-no" title="statement not covered" >				this.pc.close();</span>
+			} else {
+<span class="cstat-no" title="statement not covered" >				this._status = CLOSED;</span>
+			}
+		}
+	}
+&nbsp;
+	/**
+	 * Edits the SDP to set the preferred audio/video codec
+	 * @access private
+	 * @param {RTCSessionDescription} description The description retrieved by createOffer/createAnswer
+	 * @returns {RTCSessionDescription|{sdp: string, type: string}}
+	 */
+	_setPreferredCodecs(description) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(cache.config.preferredVideoCodec || cache.config.preferredAudioCodec) {</span>
+<span class="cstat-no" title="statement not covered" >			Log.d('PeerConnection~_setPreferredCodecs', {description, config: cache.config});</span>
+			const sdpLines = <span class="cstat-no" title="statement not covered" >description.sdp.split(/\r?\n/);</span>
+			const medias = <span class="cstat-no" title="statement not covered" >{audio: [], video: []};</span>
+			let current = <span class="cstat-no" title="statement not covered" >null;</span>
+			// Parse SDP
+<span class="cstat-no" title="statement not covered" >			sdpLines.forEach((sdpLine, i) =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				if(/^m=/.test(sdpLine)) {</span>
+					const d = <span class="cstat-no" title="statement not covered" >/^m=(\w+)\s[0-9\/]+\s[A-Za-z0-9\/]+\s([0-9\s]+)/.exec(sdpLine);</span>
+<span class="cstat-no" title="statement not covered" >					current = {</span>
+						fmt: d[2].split(/\s/),
+						index: i,
+						codecs: []
+					};
+<span class="cstat-no" title="statement not covered" >					medias[d[1]].push(current);</span>
+				} else <span class="cstat-no" title="statement not covered" >if(current &amp;&amp; /^a=rtpmap:/.test(sdpLine)) {</span>
+					const c = <span class="cstat-no" title="statement not covered" >/^a=rtpmap:(\d+)\s([a-zA-Z0-9\-\/]+)/.exec(sdpLine);</span>
+<span class="cstat-no" title="statement not covered" >					if(c) {</span>
+<span class="cstat-no" title="statement not covered" >						current.codecs.push({</span>
+							id: c[1],
+							name: c[2],
+							index: i
+						});
+					}
+				}
+			});
+<span class="cstat-no" title="statement not covered" >			Log.d('PeerConnection~_setPreferredCodecs', medias);</span>
+			let update = <span class="cstat-no" title="statement not covered" >false;</span>
+			const prefer = <span class="cstat-no" title="statement not covered" >(mediaList, preferedCodec) =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >				mediaList.forEach(media =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+					const selected = <span class="cstat-no" title="statement not covered" >media.codecs.find(codec =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >preferedCodec.test(codec.name))</span></span>;</span>
+<span class="cstat-no" title="statement not covered" >					if(selected) {</span>
+						const fmt = <span class="cstat-no" title="statement not covered" >[selected.id].concat(media.fmt.filter(ids =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >ids !== selected.id)</span></span>);</span>
+<span class="cstat-no" title="statement not covered" >						sdpLines[media.index] = sdpLines[media.index].replace(media.fmt.join(' '), fmt.join(' '));</span>
+<span class="cstat-no" title="statement not covered" >						update = true;</span>
+					}
+				});
+			};
+<span class="cstat-no" title="statement not covered" >			if(cache.config.preferredVideoCodec) {</span>
+<span class="cstat-no" title="statement not covered" >				prefer(medias.video, cache.config.preferredVideoCodec);</span>
+			}
+<span class="cstat-no" title="statement not covered" >			if(cache.config.preferredAudioCodec) {</span>
+<span class="cstat-no" title="statement not covered" >				prefer(medias.audio, cache.config.preferredAudioCodec);</span>
+			}
+<span class="cstat-no" title="statement not covered" >			if(update) {</span>
+<span class="cstat-no" title="statement not covered" >				Log.d('PeerConnection~_setPreferredCodecs', sdpLines.join('\r\n'));</span>
+<span class="cstat-no" title="statement not covered" >				return {</span>
+					sdp: sdpLines.join('\r\n'),
+					type: description.type
+				};
+			}
+		}
+<span class="cstat-no" title="statement not covered" >		return description;</span>
+	}
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 14:53:54 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

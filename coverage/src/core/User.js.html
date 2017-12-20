@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/User.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">src/core/</a> User.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">68.97% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>40/58</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">62.5% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">58.33% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>14/24</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">70.18% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>40/57</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as DataSync from './util/DataSync';
+import cache from './util/cache';
+import * as Log from './util/Log';
+import Room from './Room';
+import Device from './Device';
+import {CONNECTED, NOT_CONNECTED} from './util/constants';
+import Webcom from 'webcom/webcom';
+&nbsp;
+let initializing = false;
+&nbsp;
+/**
+ * User informations
+ * @public
+ */
+export default class User {
+	/**
+	 * Create a user
+	 * @param {Webcom/api.DataSnapshot|object} snapData The data snapshot
+	 * @access protected
+	 */
+	constructor(snapData) {
+		const values = Object.assign({}, snapData.val());
+		/**
+		 * User's unique id
+		 * @type {string}
+		 */
+		this.uid = snapData.name();
+		/**
+		 * User's display name
+		 * @type {string}
+		 */
+		this.name = values.name;
+		/**
+		 * User's status
+		 * @type {string}
+		 */
+		this.status = values.status;
+		/**
+		 * User's last know connection ts
+		 * @type {number}
+		 */
+		this.lastSeen = values.lastSeen;
+		/**
+		 * Indicates if the user is an anonymous user
+		 * @type {boolean}
+		 */
+		this.anonymous = /^anonymous/.test(this.uid);
+		// TODO #Feat: Add 'extra' property for unrestricted additional information ?
+	}
+&nbsp;
+	/**
+	 * Invite a user directly. This will create a new Room, log you in it &amp; invite the user.
+	 * @param {string} [message] a message to add to the invite
+	 * @return {Promise&lt;{room: Room, invite: Invite}, Error&gt;}
+	 */
+	invite(message) <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >		if(!cache.user) {</span>
+<span class="cstat-no" title="statement not covered" >			return Promise.reject(new Error('Only an authenticated user can invite another User.'));</span>
+		}
+<span class="cstat-no" title="statement not covered" >		return Room.create(`${cache.user.uid}-${this.uid}`)</span>
+			.then(room =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >				return room.invite([this], null, message);</span>
+			})
+			.then(data =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >				return {room: data.room, invite: data.invites[0]};</span>
+			})
+			.catch(Log.r('User~invite'));
+	}
+&nbsp;
+	/**
+	 * List Users's devices. Only for current user.
+	 * @access protected
+	 * @return {Promise&lt;Device[], Error&gt;}
+	 */
+	devices() {
+		return DataSync.list(`_/devices/${this.uid}`, Device);
+	}
+&nbsp;
+	/**
+	 * Init the current user
+	 * @access protected
+	 * @param {string} uid The user's uid
+	 * @param {string} [name] The user's display name
+	 * @returns {Promise&lt;User, Error&gt;}
+	 */
+	static init (uid, name) {
+		<span class="missing-if-branch" title="else path not taken" >E</span>if(!initializing) {
+			initializing = true;
+			const d = {status: CONNECTED, lastSeen: DataSync.ts()};
+			<span class="missing-if-branch" title="else path not taken" >E</span>if(name) {
+				Object.assign(d, {name});
+			}
+			let deviceId = Webcom.INTERNAL.PersistentStorage.get(uid);
+			return DataSync.update(`users/${uid}`, d)
+				// Register current device
+				.then(() =&gt; {
+					const deviceMetadata = {
+						status: CONNECTED,
+						sdk: {
+							reach: SDK_VERSION,
+							webcom: Webcom.SDK_VERSION
+						},
+						userAgent: navigator.userAgent
+					};
+					if(deviceId) {
+						return DataSync.update(`_/devices/${uid}/${deviceId}`, deviceMetadata);
+					}
+					return DataSync.push(`_/devices/${uid}`, deviceMetadata);
+				})
+				// Save device
+				.then(deviceRef =&gt; {
+					if (!deviceId) {
+						deviceId = deviceRef.name();
+						Webcom.INTERNAL.PersistentStorage.set(uid, deviceId);
+					}
+					cache.device = deviceId;
+				})
+				// Add onDisconnect actions
+				.then(() =&gt; {
+					// Disconnect device
+					DataSync.onDisconnect(`_/devices/${uid}/${deviceId}/status`).set(NOT_CONNECTED);
+					// Update user status
+					DataSync.onDisconnect(`users/${uid}`).update({
+						status: NOT_CONNECTED,
+						lastSeen: DataSync.ts()
+					});
+				})
+				// Get user
+				.then(() =&gt; User.get(uid))
+				.then(user =&gt; {
+					initializing = false;
+					return user;
+				})
+				.catch(e =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >					Log.e(e);</span>
+<span class="cstat-no" title="statement not covered" >					initializing = false;</span>
+<span class="cstat-no" title="statement not covered" >					return Promise.reject(e);</span>
+				});
+		}
+<span class="cstat-no" title="statement not covered" >		return User.get(uid);</span>
+	}
+&nbsp;
+	/**
+	 * Disconnect the current user
+	 * @access protected
+	 * @param {User} user The current user
+	 * @returns {Promise}
+	 */
+	static disconnect(user) {
+		// Cancel onDisconnect
+		DataSync.onDisconnect(`_/devices/${user.uid}/${cache.device}/status`).cancel();
+		DataSync.onDisconnect(`users/${user.uid}`).cancel();
+&nbsp;
+		<span class="missing-if-branch" title="if path not taken" >I</span>if(user.anonymous) {
+<span class="cstat-no" title="statement not covered" >			return DataSync.remove(`_/devices/${user.uid}`)</span>
+				.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >DataSync.get(`_/invites/${user.uid}`))</span></span>
+				.then(invites =&gt; <span class="fstat-no" title="function not covered" >{</span>
+					const inviteIds = <span class="cstat-no" title="statement not covered" >[];</span>
+<span class="cstat-no" title="statement not covered" >					invites.forEach(invite =&gt; <span class="fstat-no" title="function not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" >						inviteIds.push(invite.name());</span>
+					});
+<span class="cstat-no" title="statement not covered" >					return Promise.all(inviteIds.map(inviteId =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >DataSync.remove(`_/invites/${user.uid}/${inviteId}`))</span></span>);</span>
+				})
+				// TODO refactor data model for invites so we can delete _/invites/${user.uid}
+				// .then(() =&gt; DataSync.remove(`_/invites/${user.uid}`))
+				.then(() =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >DataSync.remove(`users/${user.uid}`))</span></span>
+				.then(() =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >					Webcom.INTERNAL.PersistentStorage.remove(user.uid);</span>
+				})
+				.catch(Log.r('User#anonymous_disconnect'));
+		}
+		return DataSync.set(`_/devices/${user.uid}/${cache.device}/status`, NOT_CONNECTED)
+			.then(() =&gt; DataSync.get(`_/devices/${user.uid}`))
+			.then(devices =&gt; {
+				// Only change user's status if no other device connected
+				const hasConnectedDevices = devices.forEach(device =&gt; {
+					return (new RegExp(`^${CONNECTED}$`)).test(device.val().status);
+				});
+				if(!hasConnectedDevices) {
+					return DataSync.update(`users/${user.uid}`, {status: NOT_CONNECTED});
+				}
+				return true;
+			})
+			.catch(Log.r('User#disconnect'));
+	}
+&nbsp;
+	/**
+	 * Get a user by its uid
+	 * @access private
+	 * @param {string} uid The user's uid
+	 * @returns {Promise&lt;User, Error&gt;}
+	 */
+	static get(uid) {
+		return DataSync.get(`users/${uid}`)
+		.then(snapData =&gt; snapData ? new User(snapData) : <span class="branch-1 cbranch-no" title="branch not covered" >null)</span>
+		.catch(Log.r('User#get'));
+	}
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 14:53:54 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

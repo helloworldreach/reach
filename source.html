@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="">
+  <title data-ice="title">Source | Reach API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/webcom-components/reach" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Reach.js~Reach.html">Reach</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Config.js~Config.html">Config</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Invite.js~Invite.html">Invite</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Message.js~Message.html">Message</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Participant.js~Participant.html">Participant</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/Room.js~Room.html">Room</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/User.js~User.html">User</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/stream</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/stream/Local.js~Local.html">Local</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/stream/Remote.js~Remote.html">Remote</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/util/Media.js~Media.html">Media</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">core/webrtc</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/core/webrtc/PeerConnection.js~PeerConnection.html">PeerConnection</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">definitions</div><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Browser">Browser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Codec/audio">Codec/audio</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Codec/video">Codec/video</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Invite">Events/Invite</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Reach">Events/Reach</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Room">Events/Room</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Events/Stream">Events/Stream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ICEServer">ICEServer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamTypes">StreamTypes</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">external/datasync</div><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://datasync.orange.com/doc/Webcom.html">Webcom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://datasync.orange.com/doc/api.Query.html#~cancelCallback">Webcom/api.Query~cancelCallback</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">external/dom</div><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">external/webrtc</div><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="http://w3c.github.io/mediacapture-main/#idl-def-MediaDeviceInfo">MediaDeviceInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://w3c.github.io/mediacapture-main/getusermedia.html#stream-api">MediaStream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://w3c.github.io/mediacapture-main/getusermedia.html#idl-def-MediaStreamConstraints">MediaStreamConstraints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://w3c.github.io/mediacapture-main/getusermedia.html#idl-def-MediaTrackConstraints">MediaTrackConstraints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://w3c.github.io/webrtc-pc/#interface-definition">RTCPeerConnection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://w3c.github.io/webrtc-pc/#rtcrtpsender-interface">RTCRtpSender</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://w3c.github.io/webrtc-pc/#rtcsessiondescription-class">RTCSessionDescription</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">137/139</span></h1>
+
+<table class="files-summary" data-ice="files" data-use-coverage="true">
+  <thead>
+    <tr>
+      <td>File</td>
+      <td>Identifier</td>
+      <td class="coverage">Document</td>
+      <td style="display: none;">Size</td>
+      <td style="display: none;">Lines</td>
+      <td style="display: none;">Updated</td>
+    </tr>
+  </thead>
+  <tbody>
+    
+  <tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/Reach.js.html">src/Reach.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/Reach.js~Reach.html">Reach</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">24/24</span></td>
+      <td style="display: none;" data-ice="size">8670 byte</td>
+      <td style="display: none;" data-ice="lines">337</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/Config.js.html#errorLines=91">src/core/Config.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Config.js~Config.html">Config</a></span></td>
+      <td class="coverage"><span data-ice="coverage">90 %</span><span data-ice="coverageCount" class="coverage-count">10/11</span></td>
+      <td style="display: none;" data-ice="size">4744 byte</td>
+      <td style="display: none;" data-ice="lines">179</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/Device.js.html">src/core/Device.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">856 byte</td>
+      <td style="display: none;" data-ice="lines">43</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/Invite.js.html">src/core/Invite.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Invite.js~Invite.html">Invite</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">18/18</span></td>
+      <td style="display: none;" data-ice="size">6716 byte</td>
+      <td style="display: none;" data-ice="lines">278</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/Message.js.html">src/core/Message.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Message.js~Message.html">Message</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">8/8</span></td>
+      <td style="display: none;" data-ice="size">2109 byte</td>
+      <td style="display: none;" data-ice="lines">88</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/Participant.js.html">src/core/Participant.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Participant.js~Participant.html">Participant</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">4/4</span></td>
+      <td style="display: none;" data-ice="size">1043 byte</td>
+      <td style="display: none;" data-ice="lines">40</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/Room.js.html">src/core/Room.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/Room.js~Room.html">Room</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">17/17</span></td>
+      <td style="display: none;" data-ice="size">11250 byte</td>
+      <td style="display: none;" data-ice="lines">354</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/User.js.html">src/core/User.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/User.js~User.html">User</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">7/7</span></td>
+      <td style="display: none;" data-ice="size">5406 byte</td>
+      <td style="display: none;" data-ice="lines">198</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/stream/Local.js.html">src/core/stream/Local.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/stream/Local.js~Local.html">Local</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">20/20</span></td>
+      <td style="display: none;" data-ice="size">13518 byte</td>
+      <td style="display: none;" data-ice="lines">449</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/stream/Remote.js.html#errorLines=193">src/core/stream/Remote.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/stream/Remote.js~Remote.html">Remote</a></span></td>
+      <td class="coverage"><span data-ice="coverage">94 %</span><span data-ice="coverageCount" class="coverage-count">16/17</span></td>
+      <td style="display: none;" data-ice="size">5403 byte</td>
+      <td style="display: none;" data-ice="lines">195</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/stream/StreamManager.js.html">src/core/stream/StreamManager.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">929 byte</td>
+      <td style="display: none;" data-ice="lines">49</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/util/DataSync.js.html">src/core/util/DataSync.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">4252 byte</td>
+      <td style="display: none;" data-ice="lines">148</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/util/Log.js.html">src/core/util/Log.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">2659 byte</td>
+      <td style="display: none;" data-ice="lines">88</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/util/Media.js.html">src/core/util/Media.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/util/Media.js~Media.html">Media</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">5/5</span></td>
+      <td style="display: none;" data-ice="size">5464 byte</td>
+      <td style="display: none;" data-ice="lines">169</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/util/cache.js.html">src/core/util/cache.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">2725 byte</td>
+      <td style="display: none;" data-ice="lines">167</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/util/constants.js.html">src/core/util/constants.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">1380 byte</td>
+      <td style="display: none;" data-ice="lines">84</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/webrtc/PeerConnection.js.html">src/core/webrtc/PeerConnection.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/core/webrtc/PeerConnection.js~PeerConnection.html">PeerConnection</a></span></td>
+      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">8/8</span></td>
+      <td style="display: none;" data-ice="size">13834 byte</td>
+      <td style="display: none;" data-ice="lines">497</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/core/webrtc/PeerConnectionManager.js.html">src/core/webrtc/PeerConnectionManager.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">2751 byte</td>
+      <td style="display: none;" data-ice="lines">101</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/definitions/Browser.js.html">src/definitions/Browser.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">1505 byte</td>
+      <td style="display: none;" data-ice="lines">36</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/definitions/Codec.js.html">src/definitions/Codec.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">1339 byte</td>
+      <td style="display: none;" data-ice="lines">37</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/definitions/Events.js.html">src/definitions/Events.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">4246 byte</td>
+      <td style="display: none;" data-ice="lines">136</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/definitions/ICEServer.js.html">src/definitions/ICEServer.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">321 byte</td>
+      <td style="display: none;" data-ice="lines">8</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/definitions/StreamTypes.js.html">src/definitions/StreamTypes.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">857 byte</td>
+      <td style="display: none;" data-ice="lines">35</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/datasync/Webcom.js.html">src/external/datasync/Webcom.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">74 byte</td>
+      <td style="display: none;" data-ice="lines">3</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/datasync/api.DataSnapshot.js.html">src/external/datasync/api.DataSnapshot.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">119 byte</td>
+      <td style="display: none;" data-ice="lines">4</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/datasync/api.OnDisconnect.js.html">src/external/datasync/api.OnDisconnect.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">119 byte</td>
+      <td style="display: none;" data-ice="lines">4</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/datasync/api.Query.js.html">src/external/datasync/api.Query.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">255 byte</td>
+      <td style="display: none;" data-ice="lines">7</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/dom/Element.js.html">src/external/dom/Element.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">88 byte</td>
+      <td style="display: none;" data-ice="lines">3</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/webrtc/MediaDeviceInfo.js.html">src/external/webrtc/MediaDeviceInfo.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">102 byte</td>
+      <td style="display: none;" data-ice="lines">2</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/webrtc/MediaStream.js.html">src/external/webrtc/MediaStream.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">103 byte</td>
+      <td style="display: none;" data-ice="lines">2</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/webrtc/MediaStreamConstrains.js.html">src/external/webrtc/MediaStreamConstrains.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">134 byte</td>
+      <td style="display: none;" data-ice="lines">2</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/webrtc/MediaTrackConstraints.js.html">src/external/webrtc/MediaTrackConstraints.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">132 byte</td>
+      <td style="display: none;" data-ice="lines">2</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/webrtc/RTCPeerConnection.js.html">src/external/webrtc/RTCPeerConnection.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">94 byte</td>
+      <td style="display: none;" data-ice="lines">2</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/webrtc/RTCRtpSender.js.html">src/external/webrtc/RTCRtpSender.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">92 byte</td>
+      <td style="display: none;" data-ice="lines">3</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/external/webrtc/RTCSessionDescription.js.html">src/external/webrtc/RTCSessionDescription.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">105 byte</td>
+      <td style="display: none;" data-ice="lines">2</td>
+      <td style="display: none;" data-ice="updated">2017-12-04 14:46:01 (UTC)</td>
+    </tr>
+</tbody>
+</table>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

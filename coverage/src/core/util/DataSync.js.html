@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/core/util/DataSync.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">src/core/util/</a> DataSync.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">80.95% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>34/42</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">68.18% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>15/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">75% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>15/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">81.25% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>26/32</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import cache from './cache';
+&nbsp;
+/**
+ * Get the event string for Webcom from Reach events
+ * @access protected
+ * @param {string} event A Reach event
+ * @return {string}
+ */
+export const eventType = (event) =&gt; {
+	let evt;
+	<span class="missing-if-branch" title="if path not taken" >I</span>if((/_ADDED$/i).test(event) || /_PUBLISHED$/.test(event)) {
+<span class="cstat-no" title="statement not covered" >		evt = 'added';</span>
+	} else <span class="missing-if-branch" title="if path not taken" >I</span>if(/_CHANGED$/.test(event) || /_REFRESHED$/.test(event)) {
+<span class="cstat-no" title="statement not covered" >		evt = 'changed';</span>
+	} else <span class="missing-if-branch" title="if path not taken" >I</span>if(/_REMOVED$/.test(event) || /_UNPUBLISHED$/.test(event)) {
+<span class="cstat-no" title="statement not covered" >		evt = 'removed';</span>
+	}
+	return evt ? <span class="branch-0 cbranch-no" title="branch not covered" >`child_${evt}` </span>: event;
+};
+&nbsp;
+/**
+ * Write method
+ * @param {string} method Write method (set,update)
+ * @param {string} path The path to set
+ * @param {object} data The data to set
+ * @ignore
+ */
+const _write = (method, path, data) =&gt; new Promise((resolve, reject) =&gt; {
+	cache.base.child(path)[method](data, error =&gt; error ? reject(error) : resolve());
+});
+&nbsp;
+/**
+ * {@link Webcom#set} as a {@link Promise}
+ * @access protected
+ * @param {string} path The path to set
+ * @param {object} data The data to set
+ * @return {Promise&lt;*, Error&gt;}
+ */
+export const set = _write.bind(undefined, 'set');
+&nbsp;
+/**
+ * {@link Webcom#push} as a {@link Promise}
+ * @access protected
+ * @param {string} path The path to push
+ * @param {object} data The data to push
+ * @return {Promise&lt;Webcom, Error&gt;}
+ */
+export const push = (path, data) =&gt; new Promise((resolve, reject) =&gt; {
+	const pushRef = cache.base.child(path).push(data, error =&gt; error ? reject(error) : resolve(pushRef));
+});
+&nbsp;
+/**
+ * {@link Webcom#update} as a {@link Promise}
+ * @access protected
+ * @param {string} path The path to update
+ * @param {object} data The data to update
+ * @return {Promise&lt;*, Error&gt;}
+ */
+export const update = _write.bind(undefined, 'update');
+&nbsp;
+/**
+ * {@link Webcom#remove} as a {@link Promise}
+ * @access protected
+ * @param {string} path The path to remove
+ * @return {Promise&lt;*, Error&gt;}
+ */
+export const remove = (path) =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >new Promise((resolve, reject) =&gt; <span class="fstat-no" title="function not covered" >{</span></span></span>
+<span class="cstat-no" title="statement not covered" >	cache.base.child(path).remove(error =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >error ? reject(error) : resolve())</span></span>;</span>
+});
+&nbsp;
+/**
+ * {@link Webcom#once} shortcut as a {@link Promise}
+ * @access protected
+ * @param {string} path The path
+ * @param {string} event The event
+ * @returns {Promise&lt;Webcom/api.DataSnapshot, Error&gt;}
+ */
+export const once = (path, event) =&gt; new Promise((resolve, reject) =&gt; {
+	cache.base.child(path).once(eventType(event), resolve, reject);
+});
+&nbsp;
+/**
+ * {@link Webcom#once}('value') as a {@link Promise}
+ * @access protected
+ * @param {string} path The path to get
+ * @return {Promise&lt;Webcom/api.DataSnapshot, Error&gt;}
+ */
+export const get = path =&gt; once(path, 'value');
+&nbsp;
+/**
+ * List values as a {@link Promise}
+ * @access protected
+ * @param {string} path The path to get
+ * @param {function} Type The type of the object to list
+ * @param params Additional constructor parameters
+ * @return {Promise&lt;Object[], Error&gt;}
+ */
+export const list = (path, Type, ...params) =&gt; {
+	return get(path).then(snapData =&gt; {
+		<span class="missing-if-branch" title="else path not taken" >E</span>if(snapData) {
+			const values = [];
+			snapData.forEach(snapChild =&gt; {
+				values.push(new Type(snapChild, ...params));
+			});
+			return values;
+		}
+	});
+};
+&nbsp;
+/**
+ * {@link Webcom#on} shortcut
+ * @access protected
+ * @param {string} path The path
+ * @param {string} event The event
+ * @param {Webcom/api.Query~queryCallback|function} queryCallback The callback
+ * @param {Webcom/api.Query~cancelCallback|function} [cancelCallback] The callback
+ */
+export const on = (path, event, queryCallback, cancelCallback) =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	cache.base.child(path).on(eventType(event), queryCallback, cancelCallback);</span>
+};
+&nbsp;
+/**
+ * {@link Webcom#off} shortcut
+ * @access protected
+ * @param {string} path The path
+ * @param {string} event The event
+ * @param {function} [callback] The callback
+ */
+export const off = (path, event, callback) =&gt; <span class="fstat-no" title="function not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >	cache.base.child(path).off(eventType(event), callback);</span>
+};
+&nbsp;
+/**
+ * {@link Webcom#onDisconnect} shortcut
+ * @access protected
+ * @param {string} path The path
+ * @return {Webcom/api.OnDisconnect}
+ */
+export const onDisconnect = path =&gt; cache.base.child(path).onDisconnect();
+&nbsp;
+/**
+ * Timestamp value
+ * @access protected
+ * @type {function}
+ */
+// export const ts = () =&gt; Webcom.ServerValue.TIMESTAMP;
+export const ts = () =&gt; Date.now();
+// HACK #DataSync: Rollback when TIMESTAMP works again (server-side bug with security rules)
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Dec 20 2017 14:53:54 GMT+0000 (UTC)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+{
+  "coverage": "98.56%",
+  "expectCount": 139,
+  "actualCount": 137,
+  "files": {
+    "src/core/Config.js": {
+      "expectCount": 11,
+      "actualCount": 10,
+      "undocumentLines": [
+        91
+      ]
+    },
+    "src/core/Invite.js": {
+      "expectCount": 18,
+      "actualCount": 18,
+      "undocumentLines": []
+    },
+    "src/core/stream/Local.js": {
+      "expectCount": 20,
+      "actualCount": 20,
+      "undocumentLines": []
+    },
+    "src/core/util/Media.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
+    },
+    "src/core/Message.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "src/core/Participant.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "src/core/webrtc/PeerConnection.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "src/Reach.js": {
+      "expectCount": 24,
+      "actualCount": 24,
+      "undocumentLines": []
+    },
+    "src/core/stream/Remote.js": {
+      "expectCount": 17,
+      "actualCount": 16,
+      "undocumentLines": [
+        193
+      ]
+    },
+    "src/core/Room.js": {
+      "expectCount": 17,
+      "actualCount": 17,
+      "undocumentLines": []
+    },
+    "src/core/User.js": {
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
+    }
+  }
+}
