@@ -168,6 +168,12 @@ export default class PeerConnection {
 		 * @private
 		 */
 		this._status = OPENED;
+                
+		/**
+		 * Timer/TimeInterval for stats collecting
+		 * @type {Integer : msec}
+		 */
+		this.StatsInterval = null;
 	}
 
 	/**
@@ -417,6 +423,10 @@ export default class PeerConnection {
 			this._remoteICECandidates(false);
 			// Stop listening to SDP messages
 			DataSync.off(`${this._remotePath}/sdp`, 'value');
+			// Clear ibterval to collect stats
+			if (this.StatsInterval) {
+				clearInterval(this.StatsInterval);
+			}
 			// Remove data
 			DataSync.remove(this._localPath);
 			// Close PeerConnection
@@ -493,5 +503,19 @@ export default class PeerConnection {
 			}
 		}
 		return description;
+	}
+        
+	/**
+	* get stats from RTCPeerConnection object
+	* @access private
+	* @param {interval msec} Time interval beetween stats collect. default : 1 sec.
+	* @param {selector} Type of stats : inboundrtp, outboundrtp, ... default : all
+	* @param {successCallback} callback when stats collected successCallback(stats)
+	* @param {errorCallback} callback when error when stats collected errorCallback(error)
+	 * @returns {RTCSessionDescription|{sdp: string, type: string}}
+	 */
+	stats(interval = 1000, selector = null, successCallback, errorCallback) {
+		this.StatsInterval = setInterval(interval, () => 
+			this.pc.getStats(selector, successCallback, errorCallback));
 	}
 }
