@@ -48,12 +48,12 @@ export default class Local {
 		/**
 		 * The local DOM container element where the {@link Local~media} is displayed
 		 * @type {Element}
-	  */
+		*/
 		this.container = values.container || cache.config.localStreamContainer;
 		/**
-	  * The local DOM media element where the {@link Local~media} is displayed
-	  * @type {Element}
-	  */
+		 * The local DOM media element where the {@link Local~media} is displayed
+		 * @type {Element}
+		*/
 		this.node = null;
 		/**
 		 * List of the PeerConnections associated to this local stream
@@ -78,6 +78,14 @@ export default class Local {
 
 		// Set constraints
 		this.constraints = values.constraints;
+
+		/**
+		 * The map of Stats to configure stats gathering
+		 * @type {{interval: string|number, selector: string, successCallback: function, errorCallback: function}}
+		 * @private
+		*/
+		this._mapStats = null;
+		this.stats = values.mapStats;
 	}
 
 	/**
@@ -369,9 +377,10 @@ export default class Local {
 	 * @param {string} type The stream type, see {@link StreamTypes} for possible values
 	 * @param {?Element} container The element the stream is attached to.
 	 * @param {?MediaStreamConstraints} [constraints] The stream constraints. If not defined the constraints defined in ReachConfig will be used.
+	 * @param {{interval: string|number, successCallback: function, errorCallback: function, filter: string}} [mapStats]
 	 * @returns {Promise<Local, Error>}
 	 */
-	static share(roomId, type, container, constraints) {
+	static share(roomId, type, container, constraints, mapStats = null) {
 		if(!cache.user) {
 			return Promise.reject(new Error('Only an authenticated user can share a stream.'));
 		}
@@ -380,7 +389,7 @@ export default class Local {
 				device: cache.device,
 				type
 			},
-			sharedStream = new Local(Object.assign({roomId, constraints, container}, streamMetaData));
+			sharedStream = new Local(Object.assign({roomId, constraints, container, mapStats}, streamMetaData));
 		Log.d('Local~share', {sharedStream});
 		return navigator.mediaDevices.getUserMedia(sharedStream.constraints)
 			.then(media => {
@@ -449,5 +458,21 @@ export default class Local {
 				Log.d('Local~shared', {sharedStream});
 				return sharedStream;
 			});
+	}
+
+	/**
+	 * To set webrtc stats configuration.
+	 * @type {{interval: string|number, successCallback: function, errorCallback: function}}
+	*/
+	set stats(mapStats) {
+		this._mapStats = mapStats;
+	}
+
+	/**
+	 * To get webrtc stats configuration.
+	 * @returns {{interval: string|number, successCallback: function, errorCallback: function}}
+	*/
+	get stats() {
+		return this._mapStats;
 	}
 }

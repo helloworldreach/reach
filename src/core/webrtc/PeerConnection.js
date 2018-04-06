@@ -66,8 +66,9 @@ export default class PeerConnection {
 	 * @param {string} streamId The Stream UID
 	 * @param {string} remoteDevice The remote device's UID
 	 * @param {boolean} publish Publish or Subscribe ?
+	 * @param {PeerConnection#mapStats} map of Stats
 	 */
-	constructor(stackId, streamId, remoteDevice, publish) {
+	constructor(stackId, streamId, remoteDevice, publish, mapStats) {
 		/**
 		 * The stack identifier. Used to identify exchanges between 2 devices
 		 * @type {string}
@@ -168,12 +169,21 @@ export default class PeerConnection {
 		 * @private
 		 */
 		this._status = OPENED;
-                
+
 		/**
 		 * Timer/TimeInterval for stats collecting
-		 * @type {Integer : msec}
+		 * @type {intervalID}
+		 * @private
 		 */
-		this.StatsInterval = null;
+		this._statsInterval = null;
+
+		/**
+		 * The map of Stats to configure stats gathering
+		 * @type {{interval: string|number, selector: string, successCallback: function, errorCallback: function}}
+		 * @private
+		*/
+		this._mapStats = null;
+		this.stats = mapStats;
 	}
 
 	/**
@@ -282,6 +292,13 @@ export default class PeerConnection {
 					.then(() => {
 						Log.d('PeerConnection~localDescription', this.pc.localDescription);
 						this._remoteICECandidates(true);
+						// good time to launch stats collecting
+						if (this._mapStats) {
+							if (!(this._statsInterval = this._launchStats())) {
+								this._statsInterval = null;
+								Log.w('PeerConnection~stateDisconnected', 'Stats not launched');
+							}
+						}
 					})
 					.then(() => DataSync.update(`${this._localPath}/sdp`, _toJSON(this.pc.localDescription)))
 					.catch(Log.r('PeerConnection~localDescription'));
@@ -328,6 +345,13 @@ export default class PeerConnection {
 						.then(() => {
 							Log.d('PeerConnection~offer#remoteDescription', this.pc.remoteDescription);
 							this._remoteICECandidates(true);
+							// good time to launch stats collecting
+							if (this._mapStats) {
+								if (!(this._statsInterval = this._launchStats())) {
+									this._statsInterval = null;
+									Log.w('PeerConnection~stateDisconnected', 'Stats not launched');
+								}
+							}
 						})
 						.catch(Log.e.bind(Log, 'PeerConnection~remoteDescription'));
 				}
@@ -423,9 +447,9 @@ export default class PeerConnection {
 			this._remoteICECandidates(false);
 			// Stop listening to SDP messages
 			DataSync.off(`${this._remotePath}/sdp`, 'value');
-			// Clear ibterval to collect stats
-			if (this.StatsInterval) {
-				clearInterval(this.StatsInterval);
+			// Clear interval doing stats collecting
+			if (this._statsInterval) {
+				clearInterval(this._statsInterval);
 			}
 			// Remove data
 			DataSync.remove(this._localPath);
@@ -506,16 +530,56 @@ export default class PeerConnection {
 	}
         
 	/**
-	* get stats from RTCPeerConnection object
-	* @access private
-	* @param {interval msec} Time interval beetween stats collect. default : 1 sec.
-	* @param {selector} Type of stats : inboundrtp, outboundrtp, ... default : all
-	* @param {successCallback} callback when stats collected successCallback(stats)
-	* @param {errorCallback} callback when error when stats collected errorCallback(error)
-	 * @returns {RTCSessionDescription|{sdp: string, type: string}}
+	 * launch stats with a setInterval with parameters defined in map stats
+	 * @access private
+	 * @returns {intervalID}
 	 */
-	stats(interval = 1000, selector = null, successCallback, errorCallback) {
-		this.StatsInterval = setInterval(interval, () => 
-			this.pc.getStats(selector, successCallback, errorCallback));
+	_launchStats() {
+		// if statsMap null no stats collecting
+		if (this._mapStats) {
+			// clear interval to collect stats and relaunch in case of already existing
+			if (this._statsInterval) {
+				clearInterval(this._statsInterval);
+			}
+			if (this._mapStats.interval > 0) {
+				return setInterval(() => this.pc.getStats().then(
+					mapStatResult => {this._mapStats.successCallback({'stackId':this.stackId, 'streamId':this.streamId,
+						'mapStatResult': this._mapStats.filter ? this._filterStats(mapStatResult) : mapStatResult});
+					}).catch(e => this._mapStats.errorCallback(e)), this._mapStats.interval);
+			} /* Chrome sends back an Array and FireFox a Map ! */
+		}
+		return null;
+	}
+
+	/**
+	 * filter keys in stats object depending on _mapStats.filter as RegExp
+	 * @param {RTCStats} Stats got from RTCPeerConnection
+	 * @access private
+	 * @returns {Object}
+	 */
+	_filterStats(objIn) {
+		const mapOut = new Map();
+		const regex = new RegExp(this._mapStats.filter, 'im');
+		const valueIt = objIn.values();
+		for (const key of objIn.keys()) {
+			const v = valueIt.next();
+			if(regex.test(key)) {
+				mapOut.set(key, v.value);
+			}
+		}
+		return mapOut;
+	}
+
+	/**
+	 * To set webrtc stats configuration.
+	 * @type {{interval: string|number, successCallback: function, errorCallback: function}}
+	*/
+	set stats(mapStats) {
+		this._mapStats = mapStats;
+		if (this._statsInterval) { /* if already exists then just need to re launch */
+			if (!this._launchStats()) {
+				this._mapStats = null;
+			}
+		}
 	}
 }

@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "request": "^2.83.0",
-    "webcom": "^1.2.3"
+    "webcom": "^1.2.3",
+    "webrtc-adapter": "^4.2.2"
   },
   "devDependencies": {
     "axios": "^0.17.1",
@@ -95,8 +96,7 @@
     "semantic-release": "^6.3.2",
     "validate-commit-msg": "^2.8.0",
     "webpack": "^2.2.1",
-    "webpack-bundle-analyzer": "^2.2.1",
-    "webrtc-adapter": "^4.2.2"
+    "webpack-bundle-analyzer": "^2.2.1"
   },
   "config": {
     "commitizen": {

@@ -66,6 +66,14 @@ export default class Remote {
 		 * @type {PeerConnection}
 		 */
 		this.peerConnection = null;
+
+		/**
+		 * The map of Stats to configure stats gathering
+		 * @type {{interval: string|number, selector: string, successCallback: function, errorCallback: function}}
+		 * @private
+		*/
+		this._mapStats = null;
+		this.stats = values.mapStats;
 	}
 
 	/**
@@ -79,15 +87,43 @@ export default class Remote {
 	/**
 	 * Subscribe to the stream
 	 * @param {Element} [remoteStreamContainer] The element the stream is attached to. Can be null if already specified in ReachConfig.
+	 * @param {{interval: string|number, successCallback: function, errorCallback: function, filter: string}} [stats]
+	 * The object definition to monitor stats delivering.
+	 * Description :
+	 * - interval : timer interval when calling stats.
+	 * - successCallback(statsResult) : callback when getting map stats with success. statsResult = {stackId: string, streamId: string, mapStatResult: Map}.
+	 * - errorCallback(error) : callback when getting map stats without success.
+	 * - filter : a regExp to filter the map stat's keys in mapStatResult.
+	 * @example stream.subscribe($streamElement[0], {'interval': 1000
+	 , 'successCallback': obj => {console.log("stackId:" + obj.stackId + " streamId:" + obj.streamId); 
+	 obj.mapStatResult.forEach((value, key) => console.log("mapStatResult[" + key + "]=" + Object.entries(value)));}
+	 , 'errorCallback': e => {console.log(e);}, 'filter': 'inbound'})
+	 
+	 * - Example of return with Firefox 59 & 52 :
+	 stackId:-L8hDWI7i9KZ2UJGxyr---L8hDuGjLMxp6BkPEXIF streamId:-L8hG7W3sJ5jGLTNtI28
+	 mapStatResult[inbound_rtp_audio_0]=id,inbound_rtp_audio_0,timestamp,1522251675558,type,inboundrtp,isRemote,false,mediaType,audio
+	 ,nackCount,0,remoteId,inbound_rtcp_audio_0,ssrc,1116906917,bytesReceived,18946,jitter,0,packetsLost,0,packetsReceived,177
+	 mapStatResult[inbound_rtp_video_1]=id,inbound_rtp_video_1,timestamp,1522251675558,type,inboundrtp,bitrateMean,237328.33333333334
+	 ,bitrateStdDev,207164.73487702163,firCount,0,framerateMean,20.666666666666668,framerateStdDev,3.6147844564602556,isRemote,false
+	 ,mediaType,video,nackCount,0,pliCount,0,remoteId,inbound_rtcp_video_1,ssrc,2095970140,bytesReceived,235405,discardedPackets,0
+         ,framesDecoded,101,jitter,0.011,packetsLost,0,packetsReceived,249
+	 mapStatResult[inbound_rtcp_audio_0]=id,inbound_rtcp_audio_0,timestamp,1522251644479.28,type,outboundrtp,isRemote,true,mediaType,audio
+	 ,remoteId,inbound_rtp_audio_0,ssrc,1116906917,bytesSent,7545,packetsSent,87
+	 mapStatResult[inbound_rtcp_video_1]=id,inbound_rtcp_video_1,timestamp,313010534,type,outboundrtp,isRemote,true,mediaType,video
+	 ,remoteId,inbound_rtp_video_1,ssrc,2095970140,bytesSent,206062,packetsSent,221
+        
+	 * - Example of return with Chrome 65 : see https://w3c.github.io/webrtc-stats/ where stats variables are explained.
+        
 	 * @returns {Promise}
 	 */
-	subscribe(remoteStreamContainer) {
+	subscribe(remoteStreamContainer, stats = null) {
 		if(!cache.user) {
 			return Promise.reject(new Error('Only an authenticated user can subscribe to a Room\'s stream.'));
 		}
 		// TODO: Test if not already subscribed ?
 		this.container = remoteStreamContainer || cache.config.remoteStreamContainer;
-		Log.d('Remote~subscribe', this.container);
+		this.stats = stats;
+		Log.d('Remote~subscribe', this.container, this.stats);
 		return cache.peerConnections.answer(this, this.container)
 			.then(pc => {this.peerConnection = pc;})
 			.then(() => DataSync.update(`_/rooms/${this.roomId}/subscribers/${this.uid}/${cache.device}`, {
@@ -191,5 +227,21 @@ export default class Remote {
 	 */
 	update(values) {
 		Object.keys(values).forEach(key => {this[key] = values[key];});
+	}
+
+	/**
+	 * To set webrtc stats configuration.
+	 * @type {{interval: string|number, successCallback: function, errorCallback: function}}
+	*/
+	set stats(mapStats) {
+		this._mapStats = mapStats;
+	}
+
+	/**
+	 * To get webrtc stats configuration.
+	 * @returns {{interval: string|number, successCallback: function, errorCallback: function}}
+	*/
+	get stats() {
+		return this._mapStats;
 	}
 }

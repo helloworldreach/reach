@@ -240,11 +240,38 @@ export default class Room {
 	 * @param {string} type The stream type, see {@link StreamTypes} for possible values
 	 * @param {Element} [localStreamContainer] The element the stream is attached to. Can be null if already specified in {@link Config}.
 	 * @param {MediaStreamConstraints} [constraints] The stream constraints. If not defined, the constraints defined in {@link Config} will be used.
+	 * @param {{interval: string|number, successCallback: function, errorCallback: function, filter: string}} [stats]
+	 * The object definition to monitor stats delivering.
+	 * Description :
+	 * - interval : timer interval when calling stats.
+	 * - successCallback(statsResult) : callback when getting map stats with success. statsResult = {stackId: string, streamId: string, mapStatResult: Map}.
+	 * - errorCallback(error) : callback when getting map stats without success.
+	 * - filter : a regExp to filter the map stat's keys in mapStatResult.
+	 * @example myRoom.share(Reach.types[share],$streamElement[0],constraints, {'interval': 1000
+            , 'successCallback': statsResult => {console.log("stackId:" + statsResult.stackId + " streamId:" + statsResult.streamId); 
+                statsResult.mapStatResult.forEach((value, key) => console.log("mapStatResult[" + key + "]=" + Object.entries(value)));}
+                    , 'errorCallback': e => {console.log(e);}, 'filter': 'outbound'})
+	 
+	 * - Example of return with Firefox 59 & 52 :
+	 stackId:-L8hDWI7i9KZ2UJGxyr---L8hDuGjLMxp6BkPEXIF streamId:-L8hEegAq4OFzlrde7fm
+	 mapStatResult[outbound_rtcp_audio_0]=id,outbound_rtcp_audio_0,timestamp,312670521,type,inboundrtp,isRemote,true,mediaType,audio,remoteId,outbound_rtp_audio_0
+	 ,ssrc,1498959816,bytesReceived,272996,jitter,0.001,packetsLost,0,packetsReceived,2702,roundTripTime,1
+	 mapStatResult[outbound_rtcp_video_1]=id,outbound_rtcp_video_1,timestamp,312670905,type,inboundrtp,isRemote,true,mediaType,video,remoteId,outbound_rtp_video_1
+	 ,ssrc,890776510,bytesReceived,6477261,jitter,0.004,packetsLost,0,packetsReceived,6271,roundTripTime,1
+	 mapStatResult[outbound_rtp_audio_0]=id,outbound_rtp_audio_0,timestamp,1522251335930,type,outboundrtp,isRemote,false,mediaType,audio,nackCount,0,remoteId
+	 ,outbound_rtcp_audio_0,ssrc,1498959816,bytesSent,372926,packetsSent,2846
+	 mapStatResult[outbound_rtp_video_1]=id,outbound_rtp_video_1,timestamp,1522251335930,type,outboundrtp
+	 ,bitrateMean,897687.4210526317,bitrateStdDev,471628.828860303,firCount,0,framerateMean,29.087719298245613,
+	 framerateStdDev,4.437183396167898,isRemote,false,mediaType,video,nackCount,0,pliCount,0,remoteId,outbound_rtcp_video_1
+	 ,ssrc,890776510,bytesSent,6615223,droppedFrames,21,framesEncoded,1682,packetsSent,6271
+        
+	 * - Example of return with Chrome 65 : see https://w3c.github.io/webrtc-stats/ where stats variables are explained.
+        
 	 * @returns {Promise<Local, Error>}
 	 */
-	share(type, localStreamContainer, constraints) {
-		Log.i('Room~share', {type, localStreamContainer, constraints});
-		return Local.share(this.uid, type, localStreamContainer, constraints);
+	share(type, localStreamContainer, constraints, stats = null) {
+		Log.i('Room~share', {type, localStreamContainer, constraints, stats});
+		return Local.share(this.uid, type, localStreamContainer, constraints, stats);
 	}
 
 	/**

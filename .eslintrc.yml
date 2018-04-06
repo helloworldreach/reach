@@ -38,7 +38,7 @@ rules:
     - ignoreComments: true
   max-params:
     - 2
-    - 4
+    - 5
   max-statements:
     - 2
     - 30

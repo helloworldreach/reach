@@ -1,3 +1,4 @@
+//import {browserDetails, browserShim} from 'webrtc-adapter';
 import {browserDetails, browserShim} from 'webrtc-adapter';
 import Webcom from 'webcom/webcom';
 
