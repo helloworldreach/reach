@@ -15,6 +15,24 @@ export default class Remote {
 	constructor(values) {
 		Log.d('Remote~new', values);
 		/**
+         * Janus feed id (media server usage)
+         * @type {string}
+		 * @private
+         */
+		this.feed = values.feed;
+		/**
+         * Janus room id (media server usage)
+         * @type {string}
+		 * @private
+		 */
+		this.janusRoom = values.janusRoom;
+		/**
+         * Local stream disable or not (media server usage)
+         * @type {boolean}
+		 * @private
+         */
+		this.disable = values.disable;
+		/**
 		 * The uid of the room the stream is published in
 		 * @type {string}
 		 */

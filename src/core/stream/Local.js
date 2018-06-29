@@ -192,7 +192,7 @@ export default class Local {
 		} else if(this.media && !mediaStream) {
 			// Remove node
 			this.node.srcObject = null;
-			this.container.removeChild(this.node);
+			this.container ? this.container.removeChild(this.node) : '';
 			this.node = null;
 			// Stop stream
 			this.media.getTracks().forEach(track => track.stop());
@@ -286,6 +286,7 @@ export default class Local {
 			this.media = null;
 			// Close
 			this.status = CLOSED;
+			Log.d('Local~close', this.uid);
 		}
 		return Promise.resolve(this.status);
 	}
