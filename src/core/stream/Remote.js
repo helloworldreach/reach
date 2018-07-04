@@ -48,6 +48,12 @@ export default class Remote {
 		 */
 		this.from = values.from;
 		/**
+		 * The origin user uid of the publisher of the stream (media server usage)
+		 * the one for whom gw negociates for ...
+		 * @type {string}
+		 */
+		this.originUserUid = values.originUserUid;
+		/**
 		 * The type of the stream
 		 * @type {string}
 		 */
