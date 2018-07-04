@@ -110,7 +110,7 @@ export default class Remote {
 		}
 		// TODO: Test if not already subscribed ?
 		this.container = remoteStreamContainer || cache.config.remoteStreamContainer;
-		Log.d('Remote~subscribe', this.container);
+		Log.d('Remote~subscribe', this, this.container);
 		return cache.peerConnections.answer(this, this.container)
 			.then(pc => {this.peerConnection = pc;})
 			.then(() => DataSync.update(`_/rooms/${this.roomId}/subscribers/${this.uid}/${cache.device}`, {

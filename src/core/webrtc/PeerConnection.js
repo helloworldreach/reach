@@ -265,8 +265,9 @@ export default class PeerConnection {
 
 		// Listen to SDP offer
 		DataSync.on(`${this._remotePath}/sdp`, 'value', snap => {
+			Log.d('Offer remotePath=', this._remotePath);
 			const sdpOffer = snap.val();
-			// Log.d('Offer', sdpOffer);
+			Log.d('Offer sdpOffer=', sdpOffer);
 			if(sdpOffer != null) {
 				Log.d(`PeerConnection~offered ${sdpOffer.sdp}`);
 				this.pc.setRemoteDescription(sdpOffer)
@@ -284,6 +285,7 @@ export default class PeerConnection {
 						Log.d('PeerConnection~answer#localSDP', this.pc.localDescription.sdp);
 						this._remoteICECandidates(true);
 					})
+					.then(() => console.log('PeerConnection~answer#localSDP', this.pc.localDescription.sdp))
 					.then(() => this._sendSdpToRemote())
 					.catch(Log.r('PeerConnection~answser#error'));
 			}
@@ -424,7 +426,7 @@ export default class PeerConnection {
 	 * @private
 	 */
 	_sendSdpToRemote() {
-		// Log.d('PeerConnection~_sendSdpToRemote#localSDP', this.pc.localDescription.sdp);
+		Log.d('PeerConnection~_sendSdpToRemote#localSDP', this.pc.localDescription.sdp);
 		const remoteUserId = this.remote.to ? this.remote.to : this.remote.from;
 		Device.get(remoteUserId, this.remote.device)
 			.then((remoteDevice) => {
@@ -432,6 +434,10 @@ export default class PeerConnection {
 				let newSdp = sdpOffer;
 				const local = /Chrome\/([0-9]+)/.exec(navigator.userAgent);
 				const remote = /Chrome\/([0-9]+)/.exec(remoteDevice.userAgent);
+
+				Log.d('PeerConnection~_sendSdpToRemote#this.remote.device', this.remote.device, remoteUserId);
+				Log.d('PeerConnection~_sendSdpToRemote#remoteDevice.userAgent', remoteDevice.userAgent);
+				Log.d('PeerConnection~_sendSdpToRemote#navigator.userAgent', navigator.userAgent);
 
 				if (navigator.userAgent.indexOf('Chrome')!== -1 &&
 					navigator.userAgent.indexOf('Android') !== -1 &&
