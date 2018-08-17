@@ -254,7 +254,7 @@ export default class Reach {
 	}
 
 	/**
-	 * Get the list of invites
+	 * Get the list of inviteslogout()
 	 * @return {Promise<Invite[], Error>}
 	 */
 	invites() {

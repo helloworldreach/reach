@@ -275,7 +275,7 @@ export default class Local {
 			// Stop listening to Subscribers
 			const path = `_/rooms/${this.roomId}/subscribers/${this.uid}`;
 			DataSync.off(path, 'child_added');
-			DataSync.off(path, 'child_removed');
+			//DataSync.off(path, 'child_removed'); /* il faut pouvoir passer par DataSync.on(path, 'child_removed',... pour la fermeture de peerco */
 			// Cancel onDisconnects
 			DataSync.onDisconnect(`_/rooms/${this.roomId}/streams/${this.uid}`).cancel();
 			DataSync.onDisconnect(`_/rooms/${this.roomId}/subscribers/${this.uid}`).cancel();
